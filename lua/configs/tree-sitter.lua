@@ -1,7 +1,7 @@
-require'nvim-treesitter'.setup{
+require 'nvim-treesitter'.setup {
   highlight = {
     enable = true
   }
 }
 
-vim.api.nvim_command(':TSEnable highlight')
+vim.api.nvim_command ':TSEnable highlight'

@@ -1,4 +1,4 @@
-require'cosmic-ui'.setup {
+require 'cosmic-ui'.setup {
   -- default border toconfigs.cosmic-ui use
   -- 'single', 'double', 'rounded', 'solid', 'shadow'
   border_style = 'single',

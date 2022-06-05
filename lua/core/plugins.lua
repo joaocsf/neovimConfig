@@ -131,6 +131,7 @@ local function plugins(use)
   use {
     'jose-elias-alvarez/null-ls.nvim',
     event = { 'BufRead', 'BufNewFile' },
+    config = conf 'null-ls'
   }
 
   use 'ggandor/lightspeed.nvim'
@@ -170,11 +171,11 @@ local function plugins(use)
 
 end
 
-return require('packer').startup({
+return require 'packer'.startup {
   plugins,
   config = {
     display = {
-      open_fn = require('packer.util').float,
+      open_fn = require 'packer.util'.float,
     }
   }
-})
+}

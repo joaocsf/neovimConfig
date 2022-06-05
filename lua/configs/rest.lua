@@ -1,4 +1,4 @@
-require'rest-nvim'.setup{
+require 'rest-nvim'.setup {
   highlight = {
     enabled = true,
     timeout = 150,

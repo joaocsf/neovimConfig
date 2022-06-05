@@ -17,7 +17,7 @@ wo.wrap = false
 wo.rnu = true
 wo.nu = true
 wo.cursorline = true
-wo.colorcolumn ='80,120'
+wo.colorcolumn = '80,120'
 
 vim.opt.fillchars = {
   eob = ' '
@@ -30,12 +30,12 @@ vim.opt.shiftwidth = 2
 
 vim.opt.termguicolors = true
 
-vim.api.nvim_command('colorscheme terafox')
+vim.api.nvim_command 'colorscheme terafox'
 
-vim.opt_global.shortmess:remove("F")
+vim.opt_global.shortmess:remove 'F'
 
 vim.g.timeoutlen = 500
-vim.g.neovide_cursor_vfx_mode = "pixiedust"
-vim.g.neovide_cursor_vfx_mode = "pixiedust"
+vim.g.neovide_cursor_vfx_mode = 'pixiedust'
+vim.g.neovide_cursor_vfx_mode = 'pixiedust'
 vim.g.neovide_cursor_vfx_particle_density = 50.0
 vim.g.neovide_refresh_rate = 144

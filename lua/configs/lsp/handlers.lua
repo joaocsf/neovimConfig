@@ -4,14 +4,14 @@ local map = vim.keymap.set
 
 function M.setup()
   local signs = {
-    { name = "DiagnosticSignError", text = "" },
-    { name = "DiagnosticSignWarn", text = "" },
-    { name = "DiagnosticSignHint", text = "" },
-    { name = "DiagnosticSignInfo", text = "" },
+    { name = 'DiagnosticSignError', text = '' },
+    { name = 'DiagnosticSignWarn', text = '' },
+    { name = 'DiagnosticSignHint', text = '' },
+    { name = 'DiagnosticSignInfo', text = '' },
   }
 
   for _, sign in ipairs(signs) do
-    sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+    sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = '' })
   end
 
   vim.diagnostic.config {
@@ -22,96 +22,112 @@ function M.setup()
     severity_sort = true,
     float = {
       focusable = false,
-      style = "minimal",
-      border = "rounded",
-      source = "always",
-      header = "",
-      prefix = "",
+      style = 'minimal',
+      border = 'rounded',
+      source = 'always',
+      header = '',
+      prefix = '',
     },
   }
 
-  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
+  vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
 
-  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
+  vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
+    vim.lsp.handlers.signature_help,
+    { border = 'rounded' }
+  )
 end
 
 local function lsp_highlight_document(client)
   if client.server_capabilities.document_highlight then
-    vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
-    vim.api.nvim_create_autocmd("CursorHold", {
-      group = "lsp_document_highlight",
-      pattern = "<buffer>",
+    vim.api.nvim_create_augroup('lsp_document_highlight', { clear = true })
+    vim.api.nvim_create_autocmd('CursorHold', {
+      group = 'lsp_document_highlight',
+      pattern = '<buffer>',
       callback = vim.lsp.buf.document_highlight,
     })
-    vim.api.nvim_create_autocmd("CursorMoved", {
-      group = "lsp_document_highlight",
-      pattern = "<buffer>",
+    vim.api.nvim_create_autocmd('CursorMoved', {
+      group = 'lsp_document_highlight',
+      pattern = '<buffer>',
       callback = vim.lsp.buf.clear_references,
     })
   end
 end
 
 M.on_attach = function(client, bufnr)
-  map("n", "gh", function()
+  map('n', 'gh', function()
     vim.lsp.buf.hover()
-  end, { desc = "Hover symbol details", buffer = bufnr })
-  map("n", "<leader>la", function()
+  end, { desc = 'Hover symbol details', buffer = bufnr })
+  map('n', '<leader>la', function()
     vim.lsp.buf.code_action()
-  end, { desc = "LSP code action", buffer = bufnr })
-  map("n", "<leader>lf", function()
+  end, { desc = 'LSP code action', buffer = bufnr })
+  map('n', '<leader>lf', function()
     vim.lsp.buf.format()
-  end, { desc = "Format code", buffer = bufnr })
-  map("n", "<leader>lh", function()
+  end, { desc = 'Format code', buffer = bufnr })
+  map('n', '<leader>lh', function()
     vim.lsp.buf.signature_help()
-  end, { desc = "Signature help", buffer = bufnr })
-  map("i", "<C-?>", function()
+  end, { desc = 'Signature help', buffer = bufnr })
+  map('i', '<C-?>', function()
     vim.lsp.buf.signature_help()
-  end, { desc = "Signature help", buffer = bufnr })
-  map("n", "<leader>lr", function()
+  end, { desc = 'Signature help', buffer = bufnr })
+  map('n', '<leader>lr', function()
     vim.lsp.buf.rename()
-  end, { desc = "Rename current symbol", buffer = bufnr })
-  map("n", "gD", function()
+  end, { desc = 'Rename current symbol', buffer = bufnr })
+  map('n', 'gD', function()
     vim.lsp.buf.declaration()
-  end, { desc = "Declaration of current symbol", buffer = bufnr })
-  map("n", "gI", function()
+  end, { desc = 'Declaration of current symbol', buffer = bufnr })
+  map('n', 'gI', function()
     vim.lsp.buf.implementation()
-  end, { desc = "Implementation of current symbol", buffer = bufnr })
-  map("n", "gd", function()
+  end, { desc = 'Implementation of current symbol', buffer = bufnr })
+  map('n', 'gd', function()
     vim.lsp.buf.definition()
-  end, { desc = "Show the definition of current symbol", buffer = bufnr })
-  map("n", "gr", function()
+  end, { desc = 'Show the definition of current symbol', buffer = bufnr })
+  map('n', 'gr', function()
     vim.lsp.buf.references()
-  end, { desc = "References of current symbol", buffer = bufnr })
-  map("n", "<leader>ld", function()
+  end, { desc = 'References of current symbol', buffer = bufnr })
+  map('n', '<leader>ld', function()
     vim.diagnostic.open_float()
-  end, { desc = "Hover diagnostics", buffer = bufnr })
+  end, { desc = 'Hover diagnostics', buffer = bufnr })
 
-  map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder,
-    { desc = "Add Workspace", buffer = bufnr })
-  map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder,
-    { desc = "Remove Workspace", buffer = bufnr })
-  map("n", "<leader>wl", function()
+  map('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, { desc = 'Add Workspace', buffer = bufnr })
+  map('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, { desc = 'Remove Workspace', buffer = bufnr })
+  map('n', '<leader>wl', function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, { desc = "List Workspaces", buffer = bufnr })
+  end, { desc = 'List Workspaces', buffer = bufnr })
 
-  map("n", "[d", function()
+  map('n', '[d', function()
     vim.diagnostic.goto_prev()
-  end, { desc = "Previous diagnostic", buffer = bufnr })
-  map("n", "]d", function()
+  end, { desc = 'Previous diagnostic', buffer = bufnr })
+  map('n', ']d', function()
     vim.diagnostic.goto_next()
-  end, { desc = "Next diagnostic", buffer = bufnr })
-  map("n", "gl", function()
+  end, { desc = 'Next diagnostic', buffer = bufnr })
+  map('n', 'gl', function()
     vim.diagnostic.open_float()
-  end, { desc = "Hover diagnostics", buffer = bufnr })
-  vim.api.nvim_buf_create_user_command(bufnr, "Format", function()
+  end, { desc = 'Hover diagnostics', buffer = bufnr })
+  vim.api.nvim_buf_create_user_command(bufnr, 'Format', function()
     vim.lsp.buf.formatting()
-  end, { desc = "Format file with LSP" })
+  end, { desc = 'Format file with LSP' })
 
-  if client.name == "tsserver" or client.name == "jsonls" or client.name == "html" or client.name == "sumneko_lua" then
+  if client.name == 'tsserver'
+      or client.name == 'jsonls'
+      or client.name == 'html'
+      or client.name == 'sumneko_lua'
+  then
     client.server_capabilities.document_formatting = false
   end
 
-  local aerial_avail, aerial = pcall(require, "aerial")
+  local autocmd = vim.api.nvim_create_autocmd
+  local augroup = vim.api.nvim_create_augroup
+
+  local group = augroup('Auto Format on Save', { clear = true })
+  autocmd('BufWritePre', {
+    callback = function()
+      vim.lsp.buf.format()
+    end,
+    group = group,
+  })
+
+  local aerial_avail, aerial = pcall(require, 'aerial')
   if aerial_avail then
     aerial.on_attach(client, bufnr)
   end
@@ -119,7 +135,7 @@ M.on_attach = function(client, bufnr)
 end
 
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
-M.capabilities.textDocument.completion.completionItem.documentationFormat = { "markdown", "plaintext" }
+M.capabilities.textDocument.completion.completionItem.documentationFormat = { 'markdown', 'plaintext' }
 M.capabilities.textDocument.completion.completionItem.snippetSupport = true
 M.capabilities.textDocument.completion.completionItem.preselectSupport = true
 M.capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
@@ -129,9 +145,9 @@ M.capabilities.textDocument.completion.completionItem.commitCharactersSupport = 
 M.capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
 M.capabilities.textDocument.completion.completionItem.resolveSupport = {
   properties = {
-    "documentation",
-    "detail",
-    "additionalTextEdits",
+    'documentation',
+    'detail',
+    'additionalTextEdits',
   },
 }
 

@@ -1,10 +1,10 @@
-local metals_config = require'metals'.bare_config()
+local metals_config = require 'metals'.bare_config()
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-metals_config.capabilities = require'cmp_nvim_lsp'.update_capabilities(capabilities)
+metals_config.capabilities = require 'cmp_nvim_lsp'.update_capabilities(capabilities)
 
 metals_config.on_attach = function(client, bufnr)
-  require'configs.lsp.handlers'.on_attach(client, bufnr)
+  require 'configs.lsp.handlers'.on_attach(client, bufnr)
   vim.keymap.set('n', '<leader>mws', '<cmd>lua require"metals".worksheet_hover()<cr>', { desc = 'Metals Worksheet' })
 end
 
@@ -16,8 +16,7 @@ vim.api.nvim_create_autocmd('FileType', {
   -- something like nvim-jdtls which also works on a java filetype autocmd.
   pattern = { 'scala', 'sbt', 'java' },
   callback = function()
-    require'metals'.initialize_or_attach(metals_config)
+    require 'metals'.initialize_or_attach(metals_config)
   end,
   group = nvim_metals_group,
 })
-

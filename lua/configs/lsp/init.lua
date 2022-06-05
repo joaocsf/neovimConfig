@@ -1,13 +1,13 @@
-local lspconfig = require('lspconfig')
+local lspconfig = require 'lspconfig'
 
 local insert = table.insert
 local tbl_deep_extend = vim.tbl_deep_extend
-local handlers = require'configs.lsp.handlers'
+local handlers = require 'configs.lsp.handlers'
 local on_attach = handlers.on_attach
 handlers.setup()
 
 local servers = {}
-local lsp_installer = require'nvim-lsp-installer'
+local lsp_installer = require 'nvim-lsp-installer'
 
 for _, server in ipairs(lsp_installer.get_installed_servers()) do
   insert(servers, server.name)
@@ -22,11 +22,11 @@ for _, server in ipairs(servers) do
       end
       on_attach(client, bufnr)
     end,
-    capabilities = tbl_deep_extend("force", handlers.capabilities, lspconfig[server].capabilities or {}),
+    capabilities = tbl_deep_extend('force', handlers.capabilities, lspconfig[server].capabilities or {}),
   }
-  local present, av_overrides = pcall(require, "configs.lsp.server-settings." .. server)
+  local present, av_overrides = pcall(require, 'configs.lsp.server-settings.' .. server)
   if present then
-    opts = tbl_deep_extend("force", av_overrides, opts)
+    opts = tbl_deep_extend('force', av_overrides, opts)
   end
 
   lspconfig[server].setup(opts)
