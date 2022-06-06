@@ -19,7 +19,9 @@ map('n', '<leader>o', '<cmd>Neotree focus<cr>', { desc = 'NeoTree Focus' })
 
 -- Buffers
 -- bufferdelete
-map('n', '<leader>c', '<cmd>Bdelete<cr>', { desc = 'Close buffer' })
+map('n', '<leader>cc', '<cmd>Bdelete<cr>', { desc = 'Close buffer' })
+map('n', '<leader>ca', '<cmd>w <bar> %bd <bar> e# <bar> bd# <cr><cr>', { desc = 'Close all buffers' })
+
 -- bufferline
 map('n', '<S-k>', '<cmd>BufferLineCycleNext<cr>', { desc = 'Next buffer tab' })
 map('n', '<S-j>', '<cmd>BufferLineCyclePrev<cr>', { desc = 'Previous buffer tab' })
