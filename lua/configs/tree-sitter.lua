@@ -7,5 +7,5 @@ if ok then
   }
 
   vim.api.nvim_command ':TSEnable highlight'
+  vim.api.nvim_command ':TSEnable rainbow'
 end
-
