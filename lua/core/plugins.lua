@@ -12,6 +12,8 @@ local function plugins(use)
 
   use 'morhetz/gruvbox'
 
+  use 'sainnhe/gruvbox-material'
+
   use 'EdenEast/nightfox.nvim'
 
   use {

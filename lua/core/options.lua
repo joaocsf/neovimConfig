@@ -12,6 +12,7 @@ o.hlsearch = true
 o.incsearch = true
 o.ignorecase = true
 o.scrolloff = 8
+o.wildmenu = true
 
 wo.number = false
 wo.wrap = false
@@ -31,7 +32,8 @@ vim.opt.shiftwidth = 2
 
 vim.opt.termguicolors = true
 
-pcall(vim.api.nvim_command, 'colorscheme terafox')
+pcall(vim.api.nvim_command, 'set path+=**')
+pcall(vim.api.nvim_command, 'colorscheme gruvbox-material')
 
 vim.opt_global.shortmess:remove 'F'
 
