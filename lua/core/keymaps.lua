@@ -71,6 +71,17 @@ map('n', '<leader>hl', function()
   require 'harpoon.ui'.toggle_quick_menu()
 end, { desc = 'Harpoon List Marks' })
 
+-- Diffview
+map('n', '<leader>ga',
+  '<cmd>DiffviewOpen<cr>',
+  { desc = 'Git Diff View' })
+map('n', '<leader>gq',
+  '<cmd>DiffviewClose<cr>',
+  { desc = 'Git Diff Close' })
+map('n', '<leader>gf',
+  '<cmd>DiffviewFileHistory<cr>',
+  { desc = 'Git Diff History' })
+
 -- Telescope
 map('n', '<leader>fw', function()
   -- require'telescope.builtin'.live_grep()
@@ -79,12 +90,6 @@ end, { desc = 'Search words' })
 map('n', '<leader>gt', function()
   require 'telescope.builtin'.git_status()
 end, { desc = 'Git Status' })
-map('n', '<leader>ga',
-  '<cmd>DiffviewOpen<cr>',
-  { desc = 'Git Diff View' })
-map('n', '<leader>gq',
-  '<cmd>DiffviewClose<cr>',
-  { desc = 'Git Diff Close' })
 map('n', '<leader>gb', function()
   require 'telescope.builtin'.git_branches()
 end, { desc = 'Git branchs' })
