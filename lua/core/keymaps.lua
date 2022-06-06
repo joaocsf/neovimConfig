@@ -1,3 +1,4 @@
+require 'helpers'
 -- keymaps
 local map = vim.keymap.set
 
@@ -77,8 +78,11 @@ map('n', '<leader>gt', function()
   require 'telescope.builtin'.git_status()
 end, { desc = 'Git Status' })
 map('n', '<leader>ga',
-  '<cmd>Neotree git_status<cr>',
-  { desc = 'Git status' })
+  '<cmd>DiffviewOpen<cr>',
+  { desc = 'Git Diff View' })
+map('n', '<leader>gq',
+  '<cmd>DiffviewClose<cr>',
+  { desc = 'Git Diff Close' })
 map('n', '<leader>gb', function()
   require 'telescope.builtin'.git_branches()
 end, { desc = 'Git branchs' })
@@ -136,6 +140,7 @@ map('n', '<leader>lD', function()
   require 'telescope.builtin'.diagnostics()
 end, { desc = 'Search diagnostics' })
 
+-- Toggle Term
 -- Lazygit
 map('n', '<leader>gz', function()
   require 'helpers.term'.lazygit_toggle()

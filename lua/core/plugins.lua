@@ -168,6 +168,11 @@ local function plugins(use)
 
   use 'ThePrimeagen/harpoon'
 
+  use {
+    'sindrets/diffview.nvim',
+    requires = 'nvim-lua/plenary.nvim',
+    config = conf 'diffview'
+  }
 
 end
 

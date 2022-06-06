@@ -1,3 +1,4 @@
+require 'helpers'
 local o = vim.o
 local wo = vim.wo
 
@@ -30,7 +31,7 @@ vim.opt.shiftwidth = 2
 
 vim.opt.termguicolors = true
 
-vim.api.nvim_command 'colorscheme terafox'
+pcall(vim.api.nvim_command, 'colorscheme terafox')
 
 vim.opt_global.shortmess:remove 'F'
 

@@ -1,7 +1,8 @@
-local leap = require 'leap'
+local ok, leap = pcall(require, 'leap')
+if ok then
+  leap.setup {
+    case_insensitive = true
+  }
 
-leap.setup {
-  case_insensitive = true
-}
-
-leap.set_default_keymaps()
+  leap.set_default_keymaps()
+end
