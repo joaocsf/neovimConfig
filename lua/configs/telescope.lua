@@ -9,12 +9,12 @@ if ok then
         case_mode = 'smart_case', -- or "ignore_case" or "respect_case"
         -- the default case_mode is "smart_case"
       },
-      live_grep_raw = {
+      live_grep_args = {
         auto_quoting = true
       }
     }
   }
 
   telescope.load_extension 'fzf'
-  telescope.load_extension 'live_grep_raw'
+  telescope.load_extension 'live_grep_args'
 end

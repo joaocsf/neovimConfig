@@ -72,7 +72,7 @@ end, { desc = 'Harpoon List Marks' })
 -- Telescope
 map('n', '<leader>fw', function()
   -- require'telescope.builtin'.live_grep()
-  require 'telescope'.extensions.live_grep_raw.live_grep_raw()
+  require 'telescope'.extensions.live_grep_args.live_grep_args()
 end, { desc = 'Search words' })
 map('n', '<leader>gt', function()
   require 'telescope.builtin'.git_status()
