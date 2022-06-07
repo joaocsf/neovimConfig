@@ -7,6 +7,9 @@ local function conf(cfg)
 end
 
 local function plugins(use)
+
+  use 'lewis6991/impatient.nvim'
+
   -- Packer
   use 'wbthomason/packer.nvim'
 

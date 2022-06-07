@@ -1,3 +1,5 @@
+pcall(require, 'impatient')
+
 for _, plugin in ipairs {
   'core'
 } do
