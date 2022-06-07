@@ -44,7 +44,7 @@ if ok then
     --                           -- NOTE: this will speed up to 50 ms for 1 second following a resize
     sort_case_insensitive = false, -- used when sorting files and directories in the tree
     use_popups_for_input = true, -- If false, inputs will use vim.ui.input() instead of custom floats.
-    use_default_mappings = true,
+    use_default_mappings = false,
     --
     --event_handlers = {
     --  {
@@ -228,10 +228,6 @@ if ok then
         nowait = true,
       },
       mappings = {
-        ['<space>'] = {
-          'toggle_node',
-          nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
-        },
         ['<2-LeftMouse>'] = 'open',
         ['<cr>'] = 'open',
         ['S'] = 'open_split',
