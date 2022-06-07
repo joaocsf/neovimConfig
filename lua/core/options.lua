@@ -13,6 +13,8 @@ o.incsearch = true
 o.ignorecase = true
 o.scrolloff = 8
 o.wildmenu = true
+o.splitbelow = true
+o.splitright = true
 
 wo.number = false
 wo.wrap = false
