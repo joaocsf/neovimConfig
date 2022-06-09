@@ -179,6 +179,16 @@ local function plugins(use)
     config = conf 'diffview'
   }
 
+  use {
+    'pwntester/octo.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim',
+      'kyazdani42/nvim-web-devicons',
+    },
+    config = conf 'octo'
+  }
+
 end
 
 return require 'packer'.startup {
