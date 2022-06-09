@@ -189,6 +189,10 @@ local function plugins(use)
     config = conf 'octo'
   }
 
+  use 'tpope/vim-fugitive'
+
+  use 'tpope/vim-rhubarb'
+
 end
 
 return require 'packer'.startup {
