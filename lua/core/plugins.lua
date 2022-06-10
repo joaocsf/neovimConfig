@@ -49,10 +49,8 @@ local function plugins(use)
     config = conf 'tree-sitter',
   }
 
-  use {
-    'CosmicNvim/cosmic-ui',
-    requires = { 'MunifTanjim/nui.nvim', 'nvim-lua/plenary.nvim' },
-    config = conf 'cosmic-ui',
+  use { 'MunifTanjim/nui.nvim',
+    config = conf 'nui'
   }
 
   use {
