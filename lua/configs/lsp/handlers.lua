@@ -108,14 +108,6 @@ M.on_attach = function(client, bufnr)
     vim.lsp.buf.format()
   end, { desc = 'Format file with LSP' })
 
-  if client.name == 'tsserver'
-      or client.name == 'jsonls'
-      or client.name == 'html'
-      or client.name == 'sumneko_lua'
-  then
-    client.server_capabilities.document_formatting = false
-  end
-
   local autocmd = vim.api.nvim_create_autocmd
   local augroup = vim.api.nvim_create_augroup
 

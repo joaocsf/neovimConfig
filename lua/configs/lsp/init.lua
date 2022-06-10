@@ -15,16 +15,21 @@ if ok then
 
   for _, server in ipairs(servers) do
     local old_on_attach = lspconfig[server].on_attach
+    local present, av_overrides = pcall(require, 'configs.lsp.server-settings.' .. server)
+
     local opts = {
       on_attach = function(client, bufnr)
         if old_on_attach then
           old_on_attach(client, bufnr)
         end
         on_attach(client, bufnr)
+        if present and av_overrides.on_attach then
+          av_overrides.on_attach(client, bufnr)
+        end
       end,
       capabilities = tbl_deep_extend('force', handlers.capabilities, lspconfig[server].capabilities or {}),
     }
-    local present, av_overrides = pcall(require, 'configs.lsp.server-settings.' .. server)
+
     if present then
       opts = tbl_deep_extend('force', av_overrides, opts)
     end
