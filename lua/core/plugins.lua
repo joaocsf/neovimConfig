@@ -158,7 +158,10 @@ local function plugins(use)
     config = conf 'toggleterm'
   }
 
-  use 'stevearc/aerial.nvim'
+  use {
+    'stevearc/aerial.nvim',
+    config = conf 'aerial'
+  }
 
   use {
     'NTBBloodbath/rest.nvim',
