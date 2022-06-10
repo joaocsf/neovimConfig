@@ -72,7 +72,7 @@ if ok then
       { name = 'buffer' },
       { name = 'path' },
       { name = 'cmdline' },
-      { name = 'nvim_lsp_signature_help' },
+      -- { name = 'nvim_lsp_signature_help' },
     },
     mapping = {
       ['<Up>'] = cmp.mapping.select_prev_item(),

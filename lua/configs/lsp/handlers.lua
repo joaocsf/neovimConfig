@@ -124,6 +124,17 @@ M.on_attach = function(client, bufnr)
     aerial.on_attach(client, bufnr)
   end
   lsp_highlight_document(client)
+
+  local ok_lsp_signature, lsp_signature = pcall(require, 'lsp_signature')
+  if ok_lsp_signature then
+    lsp_signature.on_attach({
+      bind = true,
+      handlers_opts = {
+        border = 'rounded'
+      },
+      hint_prefix = '• '
+    }, bufnr)
+  end
 end
 
 M.capabilities = vim.lsp.protocol.make_client_capabilities()

@@ -108,7 +108,7 @@ local function plugins(use)
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-cmdline',
-      'hrsh7th/cmp-nvim-lsp-signature-help',
+      -- 'hrsh7th/cmp-nvim-lsp-signature-help',
       'saadparwaiz1/cmp_luasnip',
     },
     config = conf 'nvim-cmp',
@@ -195,6 +195,8 @@ local function plugins(use)
   use 'tpope/vim-fugitive'
 
   use 'tpope/vim-rhubarb'
+
+  use 'ray-x/lsp_signature.nvim'
 
 end
 
