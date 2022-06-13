@@ -1,11 +1,9 @@
 pcall(require, 'impatient')
 
-for _, plugin in ipairs {
-  'core'
-} do
-  local ok, err = pcall(require, plugin)
+local ok, err = pcall(require, 'core')
 
-  if not ok then
-    error('Failed to load ' .. plugin .. '\nError:\n' .. err .. '\n')
-  end
+if not ok then
+  error('Failed to load core \nError:\n' .. err .. '\n')
 end
+
+pcall(require, 'overrides')
