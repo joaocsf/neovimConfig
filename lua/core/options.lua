@@ -36,6 +36,7 @@ vim.opt.termguicolors = true
 
 pcall(vim.api.nvim_command, 'set path+=**')
 pcall(vim.api.nvim_command, 'colorscheme gruvbox-material')
+pcall(vim.api.nvim_command, 'syntax on')
 
 vim.opt_global.shortmess:remove 'F'
 

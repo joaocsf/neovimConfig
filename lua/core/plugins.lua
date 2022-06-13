@@ -204,6 +204,8 @@ local function plugins(use)
 
   use 'ray-x/lsp_signature.nvim'
 
+  use 'vimwiki/vimwiki'
+
 end
 
 return require 'packer'.startup {
