@@ -27,6 +27,8 @@ map('n', '<S-k>', '<cmd>BufferLineCycleNext<cr>', { desc = 'Next buffer tab' })
 map('n', '<S-j>', '<cmd>BufferLineCyclePrev<cr>', { desc = 'Previous buffer tab' })
 map('n', '>b', '<cmd>BufferLineMoveNext<cr>', { desc = 'Move buffer tab right' })
 map('n', '<b', '<cmd>BufferLineMovePrev<cr>', { desc = 'Move buffer tab left' })
+map('n', '<S-l>', '<cmd>BufferLineMoveNext<cr>', { desc = 'Move buffer tab right' })
+map('n', '<S-h>', '<cmd>BufferLineMovePrev<cr>', { desc = 'Move buffer tab left' })
 
 -- REST
 map('n', '<C-s>', '<Plug>RestNvim', { desc = 'Send Request', nowait = true, silent = true })
