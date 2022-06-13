@@ -8,16 +8,24 @@ end
 
 local function plugins(use)
 
-  use 'lewis6991/impatient.nvim'
-
   -- Packer
   use 'wbthomason/packer.nvim'
+
+  use 'lewis6991/impatient.nvim'
 
   use 'morhetz/gruvbox'
 
   use 'sainnhe/gruvbox-material'
 
   use 'EdenEast/nightfox.nvim'
+
+  use 'savq/melange'
+
+  use 'sainnhe/sonokai'
+
+  use 'sainnhe/everforest'
+
+  use 'folke/tokyonight.nvim'
 
   use {
     'nvim-telescope/telescope.nvim',
