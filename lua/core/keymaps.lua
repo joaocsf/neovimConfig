@@ -13,13 +13,13 @@ map('n', '<leader>pS', '<cmd>PackerStatus<cr>', { desc = 'Packer Status' })
 map('n', '<leader>pu', '<cmd>PackerUpdate<cr>', { desc = 'Packer Update' })
 
 
--- Neotree
-map('n', '<leader>e', '<cmd>Neotree toggle<cr>', { desc = 'NeoTree Toggle' })
-map('n', '<leader>o', '<cmd>Neotree focus<cr>', { desc = 'NeoTree Focus' })
+-- NVim-Tree
+map('n', '<leader>e', '<cmd>NvimTreeToggle<cr>', { desc = 'NvimTree Toggle' })
+map('n', '<leader>o', '<cmd>NvimTreeFocus<cr>', { desc = 'NvimTree Focus' })
 
 -- Buffers
 -- bufferdelete
-map('n', '<leader>cc', '<cmd>Bdelete<cr>', { desc = 'Close buffer' })
+map('n', '<leader>q', '<cmd>Bdelete<cr>', { desc = 'Close buffer' })
 map('n', '<leader>ca', '<cmd>w <bar> %bd <bar> e# <bar> bd# <cr><cr>', { desc = 'Close all buffers' })
 
 -- bufferline

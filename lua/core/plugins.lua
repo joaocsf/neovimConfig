@@ -1,6 +1,5 @@
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
-vim.cmd [[let g:neo_tree_remove_legacy_commands = 1]]
 
 local function conf(cfg)
   return string.format('require"configs.%s"', cfg)
@@ -64,17 +63,6 @@ local function plugins(use)
   use {
     'machakann/vim-sandwich',
     config = conf 'vim-sandwich',
-  }
-
-  use {
-    'nvim-neo-tree/neo-tree.nvim',
-    branch = 'v2.x',
-    requires = {
-      'nvim-lua/plenary.nvim',
-      'kyazdani42/nvim-web-devicons',
-      'MunifTanjim/nui.nvim',
-    },
-    config = conf 'neo-tree',
   }
 
   use {
@@ -205,6 +193,15 @@ local function plugins(use)
   use 'ray-x/lsp_signature.nvim'
 
   use 'vimwiki/vimwiki'
+
+  use {
+    'kyazdani42/nvim-tree.lua',
+    requires = {
+      'kyazdani42/nvim-web-devicons',
+    },
+    tag = 'nightly',
+    config = conf 'nvim-tree'
+  }
 
 end
 
