@@ -203,6 +203,12 @@ local function plugins(use)
     config = conf 'nvim-tree'
   }
 
+  use {
+    'SmiteshP/nvim-gps',
+    requires = 'nvim-treesitter/nvim-treesitter',
+    config = conf 'nvim-gps'
+  }
+
 end
 
 return require 'packer'.startup {
