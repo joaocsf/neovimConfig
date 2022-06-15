@@ -437,12 +437,16 @@ if ok then
     disable = {
       filetypes = {
         '^NvimTree$', '^neo%-tree$', '^dashboard$', '^Outline$', '^aerial$'
-      }
+      },
+      buftypes = { 'terminal' }
     }
   }
 
   feline.winbar.setup {
     components = winbar_components,
-    force_inactive = force_inactive
+    force_inactive = force_inactive,
+    disable = {
+      buftypes = { 'terminal' }
+    }
   }
 end
