@@ -168,7 +168,9 @@ local function plugins(use)
 
   use 'nvim-lua/plenary.nvim'
 
-  use 'ThePrimeagen/harpoon'
+  use { 'ThePrimeagen/harpoon',
+    config = conf 'harpoon'
+  }
 
   use {
     'sindrets/diffview.nvim',
