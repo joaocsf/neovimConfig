@@ -17,7 +17,7 @@ if ok then
     reload_on_bufenter = false,
     respect_buf_cwd = false,
     view = {
-      adaptive_size = false,
+      adaptive_size = true,
       centralize_selection = false,
       width = 30,
       height = 30,
@@ -36,13 +36,13 @@ if ok then
     },
     renderer = {
       add_trailing = false,
-      group_empty = false,
-      highlight_git = false,
+      group_empty = true,
+      highlight_git = true,
       full_name = false,
       highlight_opened_files = 'none',
       root_folder_modifier = ':~',
       indent_markers = {
-        enable = false,
+        enable = true,
         icons = {
           corner = '└ ',
           edge = '│ ',
