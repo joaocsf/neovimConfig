@@ -24,7 +24,8 @@ if ok then
   }
 
   local colors = {
-    bg = '#282828',
+    bg = 'StatusLine',
+    fg = 'Normal',
     black = '#282828',
     yellow = '#d8a657',
     cyan = '#89b482',
@@ -34,7 +35,6 @@ if ok then
     violet = '#d3869b',
     magenta = '#c14a4a',
     white = '#a89984',
-    fg = '#a89984',
     skyblue = '#7daea3',
     red = '#ea6962',
   }
