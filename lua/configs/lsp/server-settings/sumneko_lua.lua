@@ -1,6 +1,9 @@
 return {
   settings = {
     Lua = {
+      runtime = {
+        version = 'LuaJIT'
+      },
       diagnostics = {
         globals = { 'vim' },
       },
@@ -22,6 +25,7 @@ return {
           align_table_field_to_first_field = 'false',
         }
       },
+      telemetry = { enable = false }
     },
   },
 }
