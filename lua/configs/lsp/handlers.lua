@@ -55,7 +55,20 @@ local function lsp_highlight_document(client)
 end
 
 M.on_attach = function(client, bufnr)
-  map('n', 'gh', function()
+  map('n', 'gh', (function()
+    local lastDiagnosticBuffer = nil
+    return function()
+      local line, _ = unpack(vim.api.nvim_win_get_cursor(0))
+      lastDiagnosticBuffer = vim.api.nvim_buf_is_valid(lastDiagnosticBuffer or -1) and lastDiagnosticBuffer or nil
+      if (#vim.diagnostic.get(0, { lnum = line - 1, severity = { min = vim.diagnostic.severity.HINT } }) > 0
+          and lastDiagnosticBuffer == nil) then
+        lastDiagnosticBuffer, _ = vim.diagnostic.open_float()
+      else
+        vim.lsp.buf.hover()
+      end
+    end
+  end)(), { desc = 'Hover symbol details', buffer = bufnr })
+  map('n', 'gH', function()
     vim.lsp.buf.hover()
   end, { desc = 'Hover symbol details', buffer = bufnr })
   map('n', '<leader>la', function()
