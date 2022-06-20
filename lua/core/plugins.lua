@@ -123,7 +123,9 @@ local function plugins(use)
     config = conf 'which-key'
   }
 
-  use 'norcalli/nvim-colorizer.lua'
+  use { 'norcalli/nvim-colorizer.lua',
+    config = conf 'nvim-colorizer'
+  }
 
   use 'phaazon/hop.nvim'
 
