@@ -114,9 +114,12 @@ if ok_input and ok_autocmd and ok_menu then
       local max_width = vim.api.nvim_win_get_width(0)
 
       local menu_items = {}
-      for index, item in ipairs(items) do
-        item.index = index
-        local item_text = string.sub(format_item(item), 0, max_width - 2)
+      for index, item_value in ipairs(items) do
+        local item_text = string.sub(format_item(item_value), 0, max_width - 2)
+        local item = {
+          index = index,
+          value = item_value
+        }
         table.insert(menu_items, Menu.item(item_text, item))
       end
 
@@ -140,7 +143,7 @@ if ok_input and ok_autocmd and ok_menu then
           on_done(nil, nil)
         end,
         on_submit = function(item)
-          on_done(item, item.index)
+          on_done(item.value, item.index)
         end,
       })
 
