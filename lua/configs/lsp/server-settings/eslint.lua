@@ -1,5 +1,5 @@
 return {
-  on_attach = function(client, buffnr)
+  on_attach = function(_, _)
     local autocmd = vim.api.nvim_create_autocmd
     local augroup = vim.api.nvim_create_augroup
 
