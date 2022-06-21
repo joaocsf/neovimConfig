@@ -132,10 +132,16 @@ M.on_attach = function(client, bufnr)
     group = group,
   })
 
-  local aerial_avail, aerial = pcall(require, 'aerial')
-  if aerial_avail then
+  local ok_aerial, aerial = pcall(require, 'aerial')
+  if ok_aerial then
     aerial.on_attach(client, bufnr)
   end
+
+  local ok_navic, navic = pcall(require, 'nvim-navic')
+  if ok_navic then
+    navic.attach(client, bufnr)
+  end
+
   lsp_highlight_document(client)
 
   local ok_lsp_signature, lsp_signature = pcall(require, 'lsp_signature')

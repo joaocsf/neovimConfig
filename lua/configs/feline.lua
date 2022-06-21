@@ -5,8 +5,6 @@ if ok then
   local lsp = require 'feline.providers.lsp'
   local vi_mode_utils = require 'feline.providers.vi_mode'
 
-  local gps = require 'nvim-gps'
-
   local force_inactive = {
     filetypes = {},
     buftypes = {},
@@ -338,15 +336,14 @@ if ok then
   -- WINBAR
   -- LEFT
 
-  -- nvimGps
-  table.insert(winbar_components.active[LEFT], {
-    provider = function() return gps.get_location() end,
-    enabled = function() return gps.is_available() end,
-    hl = {
-      fg = 'orange',
-      style = 'bold'
-    }
-  })
+  -- nvim-navic
+  local ok_navic, navic = pcall(require, 'nvim-navic')
+  if ok_navic then
+    table.insert(winbar_components.active[LEFT], {
+      provider = function() return navic.get_location() end,
+      enabled = function() return navic.is_available() end
+    })
+  end
 
   -- MID
   table.insert(winbar_components.active[MID], {

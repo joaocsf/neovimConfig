@@ -208,9 +208,9 @@ local function plugins(use)
   }
 
   use {
-    'SmiteshP/nvim-gps',
-    requires = 'nvim-treesitter/nvim-treesitter',
-    config = conf 'nvim-gps'
+    'SmiteshP/nvim-navic',
+    requires = 'neovim/nvim-lspconfig',
+    config = conf 'nvim-navic'
   }
 
 end
