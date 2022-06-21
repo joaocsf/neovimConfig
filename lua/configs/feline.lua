@@ -349,6 +349,14 @@ if ok then
   })
 
   -- MID
+  table.insert(winbar_components.active[MID], {
+    provider = function() return vim.g['metals_status'] end,
+    enabled = function() return vim.g['metals_status'] end,
+    hl = {
+      fg = 'orange',
+      style = 'bold'
+    }
+  })
 
   -- RIGHT
 
