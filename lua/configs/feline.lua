@@ -347,12 +347,16 @@ if ok then
 
   -- MID
   table.insert(winbar_components.active[MID], {
-    provider = function() return vim.g['metals_status'] end,
+    provider = function()
+      local status = vim.g['metals_status']
+      local maxSize = 30
+      return string.sub(status, math.max(#status - maxSize, 0))
+    end,
     enabled = function() return vim.g['metals_status'] end,
     hl = {
       fg = 'orange',
       style = 'bold'
-    }
+    },
   })
 
   -- RIGHT
