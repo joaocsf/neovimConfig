@@ -31,6 +31,8 @@ vim.opt.expandtab = true
 vim.opt.softtabstop = 0
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
+vim.opt.updatetime = 500
+vim.opt.timeoutlen = 500
 
 vim.opt.termguicolors = true
 
@@ -40,7 +42,6 @@ pcall(vim.api.nvim_command, 'syntax on')
 
 vim.opt_global.shortmess:remove 'F'
 
-vim.g.timeoutlen = 500
 vim.g.neovide_cursor_vfx_mode = 'pixiedust'
 vim.g.neovide_cursor_vfx_mode = 'pixiedust'
 vim.g.neovide_cursor_vfx_particle_density = 50.0
