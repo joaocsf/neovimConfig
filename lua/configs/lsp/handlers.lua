@@ -39,7 +39,7 @@ function M.setup()
 end
 
 local function lsp_highlight_document(client)
-  if client.server_capabilities.document_highlight then
+  if client.server_capabilities.documentHighlightProvider then
     vim.api.nvim_create_augroup('lsp_document_highlight', { clear = true })
     vim.api.nvim_create_autocmd('CursorHold', {
       group = 'lsp_document_highlight',
@@ -137,11 +137,6 @@ M.on_attach = function(client, bufnr)
     aerial.on_attach(client, bufnr)
   end
 
-  local ok_navic, navic = pcall(require, 'nvim-navic')
-  if ok_navic then
-    navic.attach(client, bufnr)
-  end
-
   lsp_highlight_document(client)
 
   local ok_lsp_signature, lsp_signature = pcall(require, 'lsp_signature')
@@ -153,6 +148,14 @@ M.on_attach = function(client, bufnr)
       },
       hint_prefix = '• '
     }, bufnr)
+  end
+
+  local ok_navic, navic = pcall(require, 'nvim-navic')
+  if ok_navic then
+    vim.pretty_print(client.server_capabilities)
+    if client.server_capabilities.documentSymbolProvider then
+      navic.attach(client, bufnr)
+    end
   end
 end
 
