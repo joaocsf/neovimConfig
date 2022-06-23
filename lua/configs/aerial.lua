@@ -1,6 +1,8 @@
 local ok, aerial = pcall(require, 'aerial')
 if ok then
   aerial.setup {
+    backends = { 'lsp', 'treesitter', 'markdown' },
+    filter_kind = false, -- Display all symbols
     on_attach = function(bufnr)
       -- Toggle the aerial window with <leader>a
       vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>a', '<cmd>AerialToggle!<CR>', {})
