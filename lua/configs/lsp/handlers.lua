@@ -152,7 +152,6 @@ M.on_attach = function(client, bufnr)
 
   local ok_navic, navic = pcall(require, 'nvim-navic')
   if ok_navic then
-    vim.pretty_print(client.server_capabilities)
     if client.server_capabilities.documentSymbolProvider then
       navic.attach(client, bufnr)
     end
