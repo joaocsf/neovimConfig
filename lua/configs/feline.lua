@@ -335,38 +335,39 @@ if ok then
 
   -- WINBAR
   -- LEFT
-
   -- nvim-navic
   local ok_navic, navic = pcall(require, 'nvim-navic')
   if ok_navic then
     table.insert(winbar_components.active[LEFT], {
       truncate_hide = true,
-      provider = function() return navic.get_location() end,
-      short_provider = function()
-        local result = ''
-        local data = navic.get_data() or {}
-        for idx, v in ipairs(data) do
-          if idx ~= #data then
-            result = result .. string.format('%%#NavicIcons%s#%s%%*%%#NavicSeparator#> %%*', v.type, v.icon)
-          else
-            result = result .. string.format('%%#NavicIcons%s#%s%%*%%#NavicText#%s%%*', v.type, v.icon, v.name)
-          end
-        end
-        return result
-      end,
-      enabled = function() return navic.is_available() end
+      provider = function() return navic.get_location { highlight = false } end,
+      -- short_provider = function()
+      --   local result = ''
+      --   local data = navic.get_data() or {}
+      --   for idx, v in ipairs(data) do
+      --     if idx ~= #data then
+      --       result = result .. string.format('%%#NavicIcons%s#%s%%*%%#NavicSeparator#> %%*', v.type, v.icon)
+      --     else
+      --       result = result .. string.format('%%#NavicIcons%s#%s%%*%%#NavicText#%s%%*', v.type, v.icon, v.name)
+      --     end
+      --   end
+      --   return result
+      -- end,
+      enabled = function() return navic.is_available() end,
+      hl = {
+        fg = 'yellow',
+        style = 'bold'
+      },
     })
   end
 
   -- MID
   table.insert(winbar_components.active[MID], {
     provider = function()
-      local status = vim.g['metals_status']
-      local maxSize = 30
-      return string.sub(status, math.max(#status - maxSize, 0))
+      return vim.g['metals_status']
     end,
     short_provider = function()
-      return 'Metals Doing Stuff!'
+      return 'Metals is Doing Stuff!'
     end,
     enabled = function() return vim.g['metals_status'] end,
     hl = {
