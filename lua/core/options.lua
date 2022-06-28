@@ -33,6 +33,7 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.updatetime = 500
 vim.opt.timeoutlen = 500
+vim.opt_global.shortmess:remove 'F'
 
 vim.opt.termguicolors = true
 
