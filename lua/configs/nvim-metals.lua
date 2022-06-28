@@ -1,3 +1,5 @@
+local map = vim.keymap.set
+
 local ok, metals = pcall(require, 'metals')
 if ok then
 
@@ -10,8 +12,13 @@ if ok then
   metals_config.on_attach = function(client, bufnr)
     require 'configs.lsp.handlers'.on_attach(client, bufnr)
     vim.keymap.set('n', '<leader>mws', '<cmd>lua require"metals".worksheet_hover()<cr>', { desc = 'Metals Worksheet' })
+    map('n', '<leader>lm', function()
+      local ok_telescope, telescope = pcall(require, 'telescope')
+      if ok_telescope then
+        telescope.extensions.metals.commands()
+      end
+    end, { desc = 'Metals Commands' })
   end
-
   -- Autocmd that will actually be in charging of starting the whole thing
   local nvim_metals_group = vim.api.nvim_create_augroup('nvim-metals', { clear = true })
   vim.api.nvim_create_autocmd('FileType', {
