@@ -340,34 +340,19 @@ if ok then
   if ok_navic then
     table.insert(winbar_components.active[LEFT], {
       truncate_hide = true,
-      provider = function() return navic.get_location { highlight = false } end,
-      -- short_provider = function()
-      --   local result = ''
-      --   local data = navic.get_data() or {}
-      --   for idx, v in ipairs(data) do
-      --     if idx ~= #data then
-      --       result = result .. string.format('%%#NavicIcons%s#%s%%*%%#NavicSeparator#> %%*', v.type, v.icon)
-      --     else
-      --       result = result .. string.format('%%#NavicIcons%s#%s%%*%%#NavicText#%s%%*', v.type, v.icon, v.name)
-      --     end
-      --   end
-      --   return result
-      -- end,
-      enabled = function() return navic.is_available() end,
-      hl = {
-        fg = 'yellow',
-        style = 'bold'
-      },
+      provider = function() return navic.get_location() end,
+      enabled = function() return navic.is_available() end
     })
   end
 
   -- MID
   table.insert(winbar_components.active[MID], {
     provider = function()
-      return vim.g['metals_status']
+      local status = vim.g['metals_status'] or ''
+      return string.gsub(status, '%%', '%%%%') or '...'
     end,
     short_provider = function()
-      return 'Metals is Doing Stuff!'
+      return ' Metals '
     end,
     enabled = function() return vim.g['metals_status'] end,
     hl = {
