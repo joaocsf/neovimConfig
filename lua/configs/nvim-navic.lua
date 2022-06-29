@@ -4,8 +4,10 @@ local function hl(hlName)
   local ok_list, list = pcall(vim.api.nvim_get_hl_by_name, hlName, true)
   if ok_list then
     for k, v in pairs(list) do
-      local name = k == 'background' and 'background' or 'fg'
-      result[name] = string.format('#%06x', v)
+      local name = k == 'background' and 'bg' or 'fg'
+      if type(v) == 'number' then
+        result[name] = string.format('#%06x', v)
+      end
     end
   end
   return result
