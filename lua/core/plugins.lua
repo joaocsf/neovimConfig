@@ -163,10 +163,8 @@ local function plugins(use)
   }
 
   use {
-    'NTBBloodbath/rest.nvim',
-    ft = { 'http' },
-    requires = { 'nvim-lua/plenary.nvim' },
-    config = conf 'rest'
+    'diepm/vim-rest-console',
+    setup = conf 'vim-rest-console'
   }
 
   use 'rcarriga/nvim-notify'

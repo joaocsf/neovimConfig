@@ -30,12 +30,6 @@ map('n', '<b', '<cmd>BufferLineMovePrev<cr>', { desc = 'Move buffer tab left' })
 map('n', '<S-l>', '<cmd>BufferLineMoveNext<cr>', { desc = 'Move buffer tab right' })
 map('n', '<S-h>', '<cmd>BufferLineMovePrev<cr>', { desc = 'Move buffer tab left' })
 
--- REST
-map('n', '<C-s>', '<Plug>RestNvim', { desc = 'Send Request', nowait = true, silent = true })
-map('n', '<leader>rs', '<Plug>RestNvim', { desc = 'Send Request', nowait = true, silent = true })
-map('n', '<leader>rp', '<Plug>RestNvimPreview', { desc = 'Preview Curl', nowait = true, silent = true })
-map('n', '<leader>rr', '<Plug>RestNvimLast', { desc = 'Re-run last', nowait = true, silent = true })
-
 -- Smart Splits
 -- Better window navigation
 map('n', '<C-h>', function()
