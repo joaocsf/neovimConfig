@@ -215,6 +215,11 @@ local function plugins(use)
     config = conf 'nvim-navic'
   }
 
+  use {
+    'folke/lsp-colors.nvim',
+    config = conf 'lsp-colors'
+  }
+
 end
 
 return require 'packer'.startup {
