@@ -33,6 +33,7 @@ local function plugins(use)
     requires = {
       { 'nvim-lua/plenary.nvim' },
       { 'nvim-telescope/telescope-live-grep-args.nvim' },
+      { 'nvim-telescope/telescope-ui-select.nvim' }
     },
     config = conf 'telescope'
   }

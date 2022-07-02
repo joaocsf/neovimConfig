@@ -157,5 +157,4 @@ if ok_input and ok_autocmd and ok_menu then
   end
 
   override_ui_input()
-  override_ui_select()
 end
