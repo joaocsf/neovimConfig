@@ -12,8 +12,7 @@ if ok then
       nls.builtins.code_actions.proselint.with(proselintSettings),
       nls.builtins.diagnostics.proselint.with(proselintSettings),
       nls.builtins.code_actions.shellcheck,
-      nls.builtins.diagnostics.misspell,
-      nls.builtins.completion.spell,
+      nls.builtins.diagnostics.misspell
     },
   }
 end
