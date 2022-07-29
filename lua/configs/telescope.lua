@@ -1,5 +1,15 @@
 local ok, telescope = pcall(require, 'telescope')
 if ok then
+
+  local code_actions_opts = {
+    winblend = 15,
+    layout_config = {
+      prompt_position = 'top',
+      width = 0.8,
+      height = 0.9
+    }
+  }
+
   telescope.setup {
     defaults = {
       layout_strategy = 'vertical',
@@ -46,7 +56,7 @@ if ok then
         auto_quoting = true
       },
       ['ui-select'] = {
-        require 'telescope.themes'.get_dropdown()
+        require 'telescope.themes'.get_dropdown(code_actions_opts)
       }
     }
   }
