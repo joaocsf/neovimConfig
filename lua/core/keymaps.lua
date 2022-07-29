@@ -2,6 +2,19 @@ require 'helpers'
 -- keymaps
 local map = vim.keymap.set
 
+local function get_visual_selection()
+  vim.cmd 'noau normal! "vy"'
+  local text = vim.fn.getreg 'v'
+  vim.fn.setreg('v', {})
+
+  text = string.gsub(text, '\n', '')
+  if #text > 0 then
+    return text
+  else
+    return ''
+  end
+end
+
 vim.g.mapleader = ' '
 
 -- Packer
@@ -91,8 +104,12 @@ map('n', '<leader>gf',
   { desc = 'Git Diff History' })
 
 -- Telescope
+map('v', '<leader>f', function()
+  local charactersToEscape = '([%[%]%{%}%(%)\\|])'
+  local text = get_visual_selection():gsub(charactersToEscape, '\\%1')
+  require 'telescope'.extensions.live_grep_args.live_grep_args { default_text = text }
+end, { desc = 'Search Selection' })
 map('n', '<leader>fw', function()
-  -- require'telescope.builtin'.live_grep()
   require 'telescope'.extensions.live_grep_args.live_grep_args()
 end, { desc = 'Search words' })
 map('n', '<leader>gt', function()
@@ -163,7 +180,7 @@ end, { desc = 'Search diagnostics' })
 
 -- Toggle Term
 -- Lazygit
-map('n', '<leader>gz', function()
+map('n', '<leader>gg', function()
   require 'helpers.term'.lazygit_toggle()
 end, { desc = 'Lazygit' })
 
