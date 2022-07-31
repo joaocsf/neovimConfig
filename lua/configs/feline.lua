@@ -21,6 +21,11 @@ if ok then
     inactive = { {}, {}, {} },
   }
 
+  local custom_winbar_components = {
+    active = { {}, {}, {} },
+    inactive = { {}, {}, {} },
+  }
+
   local colors = {
     bg = 'StatusLine',
     fg = 'Normal',
@@ -438,6 +443,60 @@ if ok then
     }
   })
 
+  table.insert(winbar_components.inactive[MID], {
+    provider = {
+      name = 'file_info',
+      opts = {
+        type = 'unique',
+        file_modified_icon = '',
+        file_readonly_icon = ' '
+      }
+    },
+    short_provider = {
+      name = 'file_info',
+      opts = {
+        type = 'unique-short',
+        file_modified_icon = '',
+        file_readonly_icon = ' '
+      }
+    },
+    hl = {
+      fg = 'white',
+      bg = 'bg',
+      style = 'bold'
+    }
+  }
+  )
+
+
+  -- CUSTOM WINBAR COMPONENTS
+  table.insert(custom_winbar_components.inactive[LEFT], {
+    provider = 'file_type',
+    hl = {
+      fg = 'black',
+      bg = 'cyan',
+      style = 'bold'
+    },
+    left_sep = {
+      str = ' ',
+      hl = {
+        fg = 'NONE',
+        bg = 'cyan'
+      }
+    },
+    right_sep = {
+      {
+        str = ' ',
+        hl = {
+          fg = 'NONE',
+          bg = 'cyan'
+        }
+      },
+      ' '
+    }
+  })
+
+
   feline.setup {
     theme = colors,
     default_bg = 'bg',
@@ -456,6 +515,24 @@ if ok then
   feline.winbar.setup {
     components = winbar_components,
     force_inactive = force_inactive,
+    conditional_components = {
+      {
+        condition = function()
+          local files = { '^NvimTree$', '^neo%-tree$', '^dashboard$', '^Outline$', '^aerial$' }
+          local found = false
+          local ft = vim.api.nvim_buf_get_option(0, 'filetype')
+          for _, v in ipairs(files) do
+            if ft:match(v) then
+              found = true
+              break
+            end
+          end
+          return found
+        end,
+        active = custom_winbar_components.active,
+        inactive = custom_winbar_components.inactive
+      }
+    },
     disable = {
       buftypes = { 'terminal' }
     }
