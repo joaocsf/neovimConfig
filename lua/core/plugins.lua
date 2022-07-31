@@ -26,6 +26,8 @@ local function plugins(use)
 
   use 'sainnhe/everforest'
 
+  use 'rebelot/kanagawa.nvim'
+
   use 'folke/tokyonight.nvim'
 
   use {
