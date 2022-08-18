@@ -36,7 +36,7 @@ if ok then
   end
 
   cmp.setup {
-    preselect = cmp.PreselectMode.None,
+    preselect = cmp.PreselectMode.Item,
     formatting = {
       fields = { 'kind', 'abbr', 'menu' },
       format = function(_, vim_item)
