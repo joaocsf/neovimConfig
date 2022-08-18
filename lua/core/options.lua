@@ -48,3 +48,4 @@ vim.g.neovide_cursor_vfx_mode = 'pixiedust'
 vim.g.neovide_cursor_vfx_mode = 'pixiedust'
 vim.g.neovide_cursor_vfx_particle_density = 50.0
 vim.g.neovide_refresh_rate = 144
+vim.g.neovide_no_idle = true
