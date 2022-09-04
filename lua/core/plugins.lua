@@ -221,6 +221,8 @@ local function plugins(use)
     config = conf 'lsp-colors'
   }
 
+  use 'nvim-treesitter/nvim-treesitter-context'
+
 end
 
 return require 'packer'.startup {
