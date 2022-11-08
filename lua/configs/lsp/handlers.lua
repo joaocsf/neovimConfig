@@ -133,11 +133,6 @@ M.on_attach = function(client, bufnr)
     group = group,
   })
 
-  local ok_aerial, aerial = pcall(require, 'aerial')
-  if ok_aerial then
-    aerial.on_attach(client, bufnr)
-  end
-
   lsp_highlight_document(client)
 
   local ok_lsp_signature, lsp_signature = pcall(require, 'lsp_signature')

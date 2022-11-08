@@ -32,7 +32,7 @@ if ok then
 
     local ok_cmp, cmp = pcall(require, 'cmp_nvim_lsp')
     if ok_cmp then
-      local capabilities = cmp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+      local capabilities = cmp.default_capabilities()
       opts.capabilities = tbl_deep_extend('force', capabilities, opts.capabilities)
     end
 
