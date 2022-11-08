@@ -2,7 +2,7 @@ local ok, aerial = pcall(require, 'aerial')
 if ok then
   aerial.setup {
     backends = { 'lsp', 'treesitter', 'markdown' },
-    attach_mode = 'global',
+    attach_mode = 'window',
     filter_kind = false, -- Display all symbols
     on_attach = function(bufnr)
       -- Toggle the aerial window with <leader>a
