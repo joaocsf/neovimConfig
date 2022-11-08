@@ -161,7 +161,8 @@ local function plugins(use)
 
   use {
     'stevearc/aerial.nvim',
-    config = conf 'aerial'
+    config = conf 'aerial',
+    requires = 'onsails/lspkind.nvim',
   }
 
   use {
@@ -222,6 +223,10 @@ local function plugins(use)
   }
 
   use 'nvim-treesitter/nvim-treesitter-context'
+
+  use { 'onsails/lspkind.nvim',
+    config = conf 'lspkind'
+  }
 
 end
 

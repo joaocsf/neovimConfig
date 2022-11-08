@@ -1,33 +1,19 @@
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
+local ok_lspkind, lspkind = pcall(require, 'lspkind')
 
-local kind_icons = {
-  Text = '',
-  Method = '',
-  Function = '',
-  Constructor = '',
-  Field = 'ﰠ',
-  Variable = '',
-  Class = '',
-  Interface = '',
-  Module = '',
-  Property = '',
-  Unit = '',
-  Value = '',
-  Enum = '',
-  Keyword = '',
-  Snippet = '',
-  Color = '',
-  File = '',
-  Reference = '',
-  Folder = '',
-  EnumMember = '',
-  Constant = '',
-  Struct = 'פּ',
-  Event = '',
-  Operator = '',
-  TypeParameter = '',
-}
+local formatFunction = function(_, vim_item)
+  return vim_item
+end
+
+if ok_lspkind then
+  formatFunction = lspkind.cmp_format {
+    mode = 'symbol',
+    maxwidth = 50,
+    ellipsis_char = '...',
+  }
+end
+
 
 local ok, cmp = pcall(require, 'cmp')
 if ok then
@@ -42,10 +28,7 @@ if ok then
     preselect = cmp.PreselectMode.Item,
     formatting = {
       fields = { 'kind', 'abbr', 'menu' },
-      format = function(_, vim_item)
-        vim_item.kind = string.format('%s', kind_icons[vim_item.kind])
-        return vim_item
-      end,
+      format = formatFunction,
     },
     snippet = {
       expand = function(args)
