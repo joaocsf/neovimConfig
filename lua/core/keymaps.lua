@@ -177,6 +177,12 @@ end, { desc = 'Search references' })
 map('n', '<leader>lD', function()
   require 'telescope.builtin'.diagnostics()
 end, { desc = 'Search diagnostics' })
+map('n', '<leader>lI', function()
+  require 'telescope.builtin'.lsp_incoming_calls()
+end, { desc = 'Incoming calls' })
+map('n', '<leader>lO', function()
+  require 'telescope.builtin'.lsp_outgoing_calls()
+end, { desc = 'Outgoing calls' })
 
 -- Toggle Term
 -- Lazygit

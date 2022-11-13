@@ -2,6 +2,8 @@ local M = {}
 local sign_define = vim.fn.sign_define
 local map = vim.keymap.set
 
+local ok_telescope, telescope = pcall(require, 'telescope.builtin')
+
 function M.setup()
   local signs = {
     { name = 'DiagnosticSignError', text = '' },
@@ -94,10 +96,18 @@ M.on_attach = function(client, bufnr)
     vim.lsp.buf.implementation()
   end, { desc = 'Implementation of current symbol', buffer = bufnr })
   map('n', 'gd', function()
-    vim.lsp.buf.definition()
+    if ok_telescope then
+      telescope.lsp_definitions()
+    else
+      vim.lsp.buf.definition()
+    end
   end, { desc = 'Show the definition of current symbol', buffer = bufnr })
   map('n', 'gr', function()
-    vim.lsp.buf.references()
+    if ok_telescope then
+      telescope.lsp_references()
+    else
+      vim.lsp.buf.references()
+    end
   end, { desc = 'References of current symbol', buffer = bufnr })
   map('n', '<leader>ld', function()
     vim.diagnostic.open_float()
