@@ -222,7 +222,9 @@ local function plugins(use)
     config = conf 'lsp-colors'
   }
 
-  use 'nvim-treesitter/nvim-treesitter-context'
+  use { 'nvim-treesitter/nvim-treesitter-context',
+    config = conf 'treesitter-context'
+  }
 
   use { 'onsails/lspkind.nvim',
     config = conf 'lspkind'
