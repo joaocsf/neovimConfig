@@ -230,6 +230,8 @@ local function plugins(use)
     config = conf 'lspkind'
   }
 
+  use 'nvim-treesitter/playground'
+
 end
 
 return require 'packer'.startup {
