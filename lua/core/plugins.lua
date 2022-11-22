@@ -22,6 +22,8 @@ local function plugins(use)
 
   use 'savq/melange'
 
+  use 'sainnhe/edge'
+
   use 'sainnhe/sonokai'
 
   use 'sainnhe/everforest'
@@ -231,6 +233,7 @@ local function plugins(use)
   }
 
   use 'nvim-treesitter/playground'
+
 
 end
 
