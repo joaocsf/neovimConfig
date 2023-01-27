@@ -205,7 +205,7 @@ local function plugins(use)
   use 'vimwiki/vimwiki'
 
   use {
-    'kyazdani42/nvim-tree.lua',
+    'nvim-tree/nvim-tree.lua',
     requires = {
       'kyazdani42/nvim-web-devicons',
     },
@@ -234,6 +234,7 @@ local function plugins(use)
 
   use 'nvim-treesitter/playground'
 
+  use 'kyoh86/vim-jsonl'
 
 end
 

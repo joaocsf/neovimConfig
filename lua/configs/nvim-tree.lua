@@ -1,5 +1,18 @@
 local ok, tree = pcall(require, 'nvim-tree')
 
+local function natural_cmp(l, r)
+  if l.type == r.type then
+    local a = l.name
+    local b = r.name
+    local function padnum(d) return ('%03d%s'):format(#d, d) end
+
+    return tostring(a):gsub('%.?%d+', padnum) .. ('%3d'):format(#b)
+        < tostring(b):gsub('%.?%d+', padnum) .. ('%3d'):format(#a)
+  else
+    return l.type < r.type
+  end
+end
+
 if ok then
   tree.setup { -- BEGIN_DEFAULT_OPTS
     auto_reload_on_write = true,
@@ -12,7 +25,7 @@ if ok then
     open_on_setup = false,
     open_on_setup_file = false,
     open_on_tab = false,
-    sort_by = 'name',
+    sort_by = function(nodes) table.sort(nodes, natural_cmp) end,
     update_cwd = false,
     reload_on_bufenter = false,
     respect_buf_cwd = false,

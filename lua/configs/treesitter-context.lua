@@ -7,6 +7,9 @@ if ok then
     max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
     trim_scope = 'outer',
     patterns = {
+      javascript = {
+        'pair'
+      },
       hocon = {
         'pair'
       },
