@@ -172,7 +172,9 @@ local function plugins(use)
     setup = conf 'vim-rest-console'
   }
 
-  use 'rcarriga/nvim-notify'
+  use { 'rcarriga/nvim-notify',
+    setup = conf 'nvim-notify'
+  }
 
   use 'nvim-lua/plenary.nvim'
 
@@ -202,7 +204,10 @@ local function plugins(use)
 
   use 'ray-x/lsp_signature.nvim'
 
-  use 'vimwiki/vimwiki'
+  use {
+    'vimwiki/vimwiki',
+    config = conf 'vimwiki'
+  }
 
   use {
     'nvim-tree/nvim-tree.lua',
