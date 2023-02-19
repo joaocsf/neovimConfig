@@ -1,6 +1,9 @@
 require 'helpers'
+local opt = vim.opt
 local o = vim.o
 local wo = vim.wo
+
+opt.showmode = false
 
 o.mouse = 'a'
 o.guifont = 'Iosevka:h12'

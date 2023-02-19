@@ -14,6 +14,7 @@ if ok then
   end
 
   for _, server in ipairs(servers) do
+    server = server == 'sumneko_lua' and 'lua_ls' or server
     local old_on_attach = lspconfig[server].on_attach
     local present, av_overrides = pcall(require, 'configs.lsp.server-settings.' .. server)
 

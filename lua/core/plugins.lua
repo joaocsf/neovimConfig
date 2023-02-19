@@ -6,7 +6,6 @@ local function conf(cfg)
 end
 
 local function plugins(use)
-
   -- Packer
   use 'wbthomason/packer.nvim'
 
@@ -240,7 +239,6 @@ local function plugins(use)
   use 'nvim-treesitter/playground'
 
   use 'kyoh86/vim-jsonl'
-
 end
 
 return require 'packer'.startup {
