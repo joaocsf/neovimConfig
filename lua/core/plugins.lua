@@ -228,7 +228,8 @@ local function plugins(use)
     config = conf 'lsp-colors'
   }
 
-  use { 'nvim-treesitter/nvim-treesitter-context',
+  use {
+    'nvim-treesitter/nvim-treesitter-context',
     config = conf 'treesitter-context'
   }
 
@@ -239,6 +240,19 @@ local function plugins(use)
   use 'nvim-treesitter/playground'
 
   use 'kyoh86/vim-jsonl'
+
+  use 'alunny/pegjs-vim'
+
+  use {
+    "iamcco/markdown-preview.nvim",
+    run = "cd app && npm install",
+    setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
+    ft = { "markdown" },
+    ft = { "vimwiki" },
+  }
+
+  use 'godlygeek/tabular'
+
 end
 
 return require 'packer'.startup {
