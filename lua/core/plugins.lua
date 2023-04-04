@@ -71,10 +71,10 @@ local function plugins(use)
     config = conf 'vim-sandwich',
   }
 
-  use {
-    'lukas-reineke/indent-blankline.nvim',
-    config = conf 'indent-blankline',
-  }
+  -- use {
+  --   'lukas-reineke/indent-blankline.nvim',
+  --   config = conf 'indent-blankline',
+  -- }
 
   use 'mrjones2014/smart-splits.nvim'
 
@@ -160,11 +160,11 @@ local function plugins(use)
     config = conf 'toggleterm'
   }
 
-  use {
-    'stevearc/aerial.nvim',
-    config = conf 'aerial',
-    requires = 'onsails/lspkind.nvim',
-  }
+  -- use {
+  --   'stevearc/aerial.nvim',
+  --   config = conf 'aerial',
+  --   requires = 'onsails/lspkind.nvim',
+  -- }
 
   use {
     'diepm/vim-rest-console',

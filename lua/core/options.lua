@@ -36,6 +36,11 @@ vim.opt.shiftwidth = 2
 vim.opt.updatetime = 750
 vim.opt.timeoutlen = 500
 vim.opt_global.shortmess:remove 'F'
+vim.opt.list = true
+vim.opt.listchars:append 'leadmultispace:⋅│'
+vim.opt.listchars:append 'tab:>>'
+vim.opt.listchars:append 'space:⋅'
+vim.opt.listchars:append 'eol:'
 
 vim.opt.termguicolors = true
 
