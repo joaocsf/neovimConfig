@@ -159,6 +159,7 @@ M.on_attach = function(client, bufnr)
   local ok_navic, navic = pcall(require, 'nvim-navic')
   if ok_navic then
     if client.server_capabilities.documentSymbolProvider then
+      vim.b.navic_lazy_update_context = true
       navic.attach(client, bufnr)
     end
   end
