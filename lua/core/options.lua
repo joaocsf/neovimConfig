@@ -21,7 +21,7 @@ o.splitright = true
 
 wo.number = false
 wo.wrap = false
-wo.nu = true
+wo.rnu = true
 wo.cursorline = true
 wo.colorcolumn = '80,120'
 
