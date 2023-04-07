@@ -13,6 +13,10 @@ local function plugins(use)
 
   use 'morhetz/gruvbox'
 
+  use 'nyoom-engineering/oxocarbon.nvim'
+
+  use 'Yazeed1s/oh-lucy.nvim'
+
   use 'marko-cerovac/material.nvim'
 
   use 'sainnhe/gruvbox-material'
