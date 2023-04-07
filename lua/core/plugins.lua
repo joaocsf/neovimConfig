@@ -43,7 +43,8 @@ local function plugins(use)
 
   use {
     'nvim-telescope/telescope-fzf-native.nvim',
-    run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+    run =
+    'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
   }
 
   use 'famiu/bufdelete.nvim'
@@ -70,11 +71,6 @@ local function plugins(use)
     'machakann/vim-sandwich',
     config = conf 'vim-sandwich',
   }
-
-  -- use {
-  --   'lukas-reineke/indent-blankline.nvim',
-  --   config = conf 'indent-blankline',
-  -- }
 
   use 'mrjones2014/smart-splits.nvim'
 
@@ -144,8 +140,9 @@ local function plugins(use)
   use 'ggandor/lightspeed.nvim'
 
   use {
-    'feline-nvim/feline.nvim',
-    config = conf 'feline',
+    'nvim-lualine/lualine.nvim',
+    requires = { 'nvim-tree/nvim-web-devicons', opt = true },
+    config = conf 'lualine',
   }
 
   use {
@@ -159,12 +156,6 @@ local function plugins(use)
     module = { 'toggleterm', 'toggleterm.terminal' },
     config = conf 'toggleterm'
   }
-
-  -- use {
-  --   'stevearc/aerial.nvim',
-  --   config = conf 'aerial',
-  --   requires = 'onsails/lspkind.nvim',
-  -- }
 
   use {
     'diepm/vim-rest-console',
@@ -244,15 +235,13 @@ local function plugins(use)
   use 'alunny/pegjs-vim'
 
   use {
-    "iamcco/markdown-preview.nvim",
-    run = "cd app && npm install",
-    setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
-    ft = { "markdown" },
-    ft = { "vimwiki" },
+    'iamcco/markdown-preview.nvim',
+    run = 'cd app && npm install',
+    setup = function() vim.g.mkdp_filetypes = { 'markdown' } end,
+    ft = { 'markdown', 'vimwiki' },
   }
 
   use 'godlygeek/tabular'
-
 end
 
 return require 'packer'.startup {
