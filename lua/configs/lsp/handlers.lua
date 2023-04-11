@@ -97,14 +97,14 @@ M.on_attach = function(client, bufnr)
   end, { desc = 'Implementation of current symbol', buffer = bufnr })
   map('n', 'gd', function()
     if ok_telescope then
-      telescope.lsp_definitions()
+      telescope.lsp_definitions{show_line = false}
     else
       vim.lsp.buf.definition()
     end
   end, { desc = 'Show the definition of current symbol', buffer = bufnr })
   map('n', 'gr', function()
     if ok_telescope then
-      telescope.lsp_references()
+      telescope.lsp_references{show_line = false}
     else
       vim.lsp.buf.references()
     end
@@ -154,14 +154,6 @@ M.on_attach = function(client, bufnr)
       },
       hint_prefix = '• '
     }, bufnr)
-  end
-
-  local ok_navic, navic = pcall(require, 'nvim-navic')
-  if ok_navic then
-    if client.server_capabilities.documentSymbolProvider then
-      vim.b.navic_lazy_update_context = true
-      navic.attach(client, bufnr)
-    end
   end
 end
 
