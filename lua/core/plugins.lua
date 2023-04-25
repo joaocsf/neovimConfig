@@ -247,6 +247,8 @@ local function plugins(use)
 
   use 'godlygeek/tabular'
 
+  use 'rhysd/vim-grammarous'
+
   use {
     'nvimdev/dashboard-nvim',
     config = conf 'dashboard-nvim'
