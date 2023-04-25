@@ -246,6 +246,11 @@ local function plugins(use)
   }
 
   use 'godlygeek/tabular'
+
+  use {
+    'nvimdev/dashboard-nvim',
+    config = conf 'dashboard-nvim'
+  }
 end
 
 return require 'packer'.startup {
