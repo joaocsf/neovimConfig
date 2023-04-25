@@ -253,6 +253,8 @@ local function plugins(use)
     'nvimdev/dashboard-nvim',
     config = conf 'dashboard-nvim'
   }
+
+  use 'nvim-telescope/telescope-symbols.nvim'
 end
 
 return require 'packer'.startup {
