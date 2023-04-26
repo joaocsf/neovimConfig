@@ -38,7 +38,8 @@ if ok then
       section_separators = { left = '', right = '' },
       disabled_filetypes = {
         statusline = {},
-        winbar = { 'packer', 'NvimTree' },
+        winbar = { 'packer', 'NvimTree', 'dap-repl', 'dapui_console', 'dapui_watches', 'dapui_stacks',
+          'dapui_breakpoints', 'dapui_scopes' },
       },
       ignore_focus = {},
       always_divide_middle = false,
@@ -82,6 +83,6 @@ if ok then
       lualine_y = {},
       lualine_z = { lsp_status }
     },
-    extensions = { 'fugitive', 'nvim-tree', 'quickfix' }
+    extensions = { 'fugitive', 'nvim-tree', 'quickfix', 'nvim-dap-ui' }
   }
 end

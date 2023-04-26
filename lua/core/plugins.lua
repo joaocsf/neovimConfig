@@ -46,6 +46,19 @@ local function plugins(use)
     run = ':MasonUpdate',
     config = conf 'mason'
   }
+
+  use {
+    'rcarriga/nvim-dap-ui',
+    requires = {
+      'mfussenegger/nvim-dap',
+      'theHamsta/nvim-dap-virtual-text',
+      'ldelossa/nvim-dap-projects'
+    },
+    config = conf 'nvim-dap'
+  }
+
+  -- Misc
+
   use {
     'nvim-telescope/telescope.nvim',
     requires = {
