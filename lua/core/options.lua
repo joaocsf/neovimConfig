@@ -1,4 +1,3 @@
-require 'helpers'
 local opt = vim.opt
 local o = vim.o
 local wo = vim.wo
@@ -27,7 +26,7 @@ wo.cursorline = true
 wo.colorcolumn = '80,120'
 
 vim.opt.fillchars = {
-  eob = ' '
+	eob = ' '
 }
 
 vim.opt.expandtab = true
