@@ -207,11 +207,6 @@ local function plugins(use)
     config = conf 'nvim-tree'
   }
 
-  use {
-    'SmiteshP/nvim-navic',
-    requires = 'neovim/nvim-lspconfig',
-    config = conf 'nvim-navic'
-  }
 
   use {
     'folke/lsp-colors.nvim',
