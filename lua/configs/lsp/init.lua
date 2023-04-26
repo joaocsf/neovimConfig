@@ -1,34 +1,27 @@
 local ok, lspconfig = pcall(require, 'lspconfig')
 if ok then
-  local insert = table.insert
   local tbl_deep_extend = vim.tbl_deep_extend
   local handlers = require 'configs.lsp.handlers'
-  local on_attach = handlers.on_attach
   handlers.setup()
 
-  local servers = {}
-  local lsp_installer = require 'nvim-lsp-installer'
+  local servers = require 'mason-lspconfig'.get_installed_servers()
 
-  for _, server in ipairs(lsp_installer.get_installed_servers()) do
-    insert(servers, server.name)
-  end
+  for _, server_name in ipairs(servers) do
+    local has_overrides, overrides = pcall(require, 'configs.lsp.server-settings.' .. server_name)
 
-  for _, server in ipairs(servers) do
-    server = server == 'sumneko_lua' and 'lua_ls' or server
-    local old_on_attach = lspconfig[server].on_attach
-    local present, av_overrides = pcall(require, 'configs.lsp.server-settings.' .. server)
+    local old_on_attach = lspconfig[server_name].on_attach
 
     local opts = {
       on_attach = function(client, bufnr)
         if old_on_attach then
           old_on_attach(client, bufnr)
         end
-        on_attach(client, bufnr)
-        if present and av_overrides.on_attach then
-          av_overrides.on_attach(client, bufnr)
+        handlers.on_attach(client, bufnr)
+        if has_overrides and server_name.on_attach then
+          server_name.on_attach(client, bufnr)
         end
       end,
-      capabilities = tbl_deep_extend('force', handlers.capabilities, lspconfig[server].capabilities or {}),
+      capabilities = tbl_deep_extend('force', handlers.capabilities, lspconfig[server_name].capabilities or {}),
     }
 
     local ok_cmp, cmp = pcall(require, 'cmp_nvim_lsp')
@@ -37,10 +30,10 @@ if ok then
       opts.capabilities = tbl_deep_extend('force', capabilities, opts.capabilities)
     end
 
-    if present then
-      opts = tbl_deep_extend('force', av_overrides, opts)
+    if has_overrides then
+      opts = tbl_deep_extend('force', overrides, opts)
     end
 
-    lspconfig[server].setup(opts)
+    lspconfig[server_name].setup(opts)
   end
 end

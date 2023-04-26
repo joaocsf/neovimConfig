@@ -35,6 +35,17 @@ local function plugins(use)
 
   use 'folke/tokyonight.nvim'
 
+  -- LSPs/DAPS
+  use {
+    'williamboman/mason.nvim',
+    requires = {
+      'williamboman/mason-lspconfig.nvim',
+      'jay-babu/mason-nvim-dap.nvim',
+      'neovim/nvim-lspconfig',
+    },
+    run = ':MasonUpdate',
+    config = conf 'mason'
+  }
   use {
     'nvim-telescope/telescope.nvim',
     requires = {
@@ -82,13 +93,6 @@ local function plugins(use)
     'windwp/nvim-autopairs',
     event = 'InsertEnter',
     config = conf 'autopairs',
-  }
-
-  use 'neovim/nvim-lspconfig'
-
-  use {
-    'williamboman/nvim-lsp-installer',
-    config = conf 'nvim-lsp-installer',
   }
 
   use {

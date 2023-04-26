@@ -7,9 +7,9 @@ local ok_telescope, telescope = pcall(require, 'telescope.builtin')
 function M.setup()
   local signs = {
     { name = 'DiagnosticSignError', text = '' },
-    { name = 'DiagnosticSignWarn', text = '' },
-    { name = 'DiagnosticSignHint', text = '' },
-    { name = 'DiagnosticSignInfo', text = '' },
+    { name = 'DiagnosticSignWarn',  text = '' },
+    { name = 'DiagnosticSignHint',  text = '' },
+    { name = 'DiagnosticSignInfo',  text = '' },
   }
 
   for _, sign in ipairs(signs) do
@@ -64,7 +64,7 @@ M.on_attach = function(client, bufnr)
       local line, _ = unpack(vim.api.nvim_win_get_cursor(0))
       lastDiagnosticBuffer = vim.api.nvim_buf_is_valid(lastDiagnosticBuffer or -1) and lastDiagnosticBuffer or nil
       if (#vim.diagnostic.get(0, { lnum = line - 1, severity = { min = vim.diagnostic.severity.HINT } }) > 0
-          and lastDiagnosticBuffer == nil) then
+            and lastDiagnosticBuffer == nil) then
         lastDiagnosticBuffer, _ = vim.diagnostic.open_float()
       else
         vim.lsp.buf.hover()
@@ -97,14 +97,14 @@ M.on_attach = function(client, bufnr)
   end, { desc = 'Implementation of current symbol', buffer = bufnr })
   map('n', 'gd', function()
     if ok_telescope then
-      telescope.lsp_definitions{show_line = false}
+      telescope.lsp_definitions { show_line = false }
     else
       vim.lsp.buf.definition()
     end
   end, { desc = 'Show the definition of current symbol', buffer = bufnr })
   map('n', 'gr', function()
     if ok_telescope then
-      telescope.lsp_references{show_line = false}
+      telescope.lsp_references { show_line = false }
     else
       vim.lsp.buf.references()
     end
