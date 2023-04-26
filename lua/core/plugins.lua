@@ -252,6 +252,9 @@ local function plugins(use)
   use 'nvim-telescope/telescope-symbols.nvim'
 
   -- Language Specific
+
+  use { 'simrat39/rust-tools.nvim', config = conf 'rust-tools' }
+
   use {
     'scalameta/nvim-metals',
     requires = {
