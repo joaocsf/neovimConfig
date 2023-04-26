@@ -96,15 +96,6 @@ local function plugins(use)
   }
 
   use {
-    'scalameta/nvim-metals',
-    requires = {
-      'nvim-lua/plenary.nvim',
-      'hrsh7th/nvim-cmp',
-    },
-    config = conf 'nvim-metals',
-  }
-
-  use {
     'hrsh7th/nvim-cmp',
     requires = {
       'L3MON4D3/LuaSnip',
@@ -259,6 +250,16 @@ local function plugins(use)
   }
 
   use 'nvim-telescope/telescope-symbols.nvim'
+
+  -- Language Specific
+  use {
+    'scalameta/nvim-metals',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'hrsh7th/nvim-cmp',
+    },
+    config = conf 'nvim-metals',
+  }
 end
 
 return require 'packer'.startup {
