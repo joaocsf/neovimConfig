@@ -14,7 +14,6 @@ if ok_lspkind then
   }
 end
 
-
 local ok, cmp = pcall(require, 'cmp')
 if ok then
   local ok_luasnip, luasnip = pcall(require, 'luasnip')
@@ -138,5 +137,4 @@ if ok then
     end,
     group = augroup('Leave snippet', { clear = true }),
   })
-
 end
