@@ -25,6 +25,8 @@ local function plugins(use)
 
   use 'savq/melange'
 
+  use 'rose-pine/neovim'
+
   use 'sainnhe/edge'
 
   use 'sainnhe/sonokai'
