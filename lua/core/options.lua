@@ -26,7 +26,7 @@ wo.cursorline = true
 wo.colorcolumn = '80,120'
 
 vim.opt.fillchars = {
-	eob = ' '
+  eob = ' '
 }
 
 vim.opt.expandtab = true
@@ -38,7 +38,7 @@ vim.opt.timeoutlen = 500
 vim.opt_global.shortmess:remove 'F'
 vim.opt.list = true
 vim.opt.listchars:append 'leadmultispace:⋅│'
-vim.opt.listchars:append 'tab:>>'
+vim.opt.listchars:append 'tab:<->'
 vim.opt.listchars:append 'space:⋅'
 vim.opt.listchars:append 'eol:'
 
