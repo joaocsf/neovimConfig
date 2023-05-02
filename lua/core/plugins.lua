@@ -19,6 +19,11 @@ local function plugins(use)
 
   use 'marko-cerovac/material.nvim'
 
+  use { 'catppuccin/nvim',
+    as = 'catppuccin',
+    config = conf 'catppuccin'
+  }
+
   use 'sainnhe/gruvbox-material'
 
   use 'EdenEast/nightfox.nvim'
@@ -218,10 +223,8 @@ local function plugins(use)
     requires = {
       'kyazdani42/nvim-web-devicons',
     },
-    tag = 'nightly',
     config = conf 'nvim-tree'
   }
-
 
   use {
     'folke/lsp-colors.nvim',
@@ -263,8 +266,6 @@ local function plugins(use)
 
   -- Language Specific
 
-  use { 'simrat39/rust-tools.nvim', config = conf 'rust-tools' }
-
   use {
     'scalameta/nvim-metals',
     requires = {
@@ -273,6 +274,8 @@ local function plugins(use)
     },
     config = conf 'nvim-metals',
   }
+
+  use 'will133/vim-dirdiff'
 end
 
 return require 'packer'.startup {
