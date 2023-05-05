@@ -21,9 +21,6 @@ if ok then
     hijack_cursor = false,
     hijack_netrw = true,
     hijack_unnamed_buffer_when_opening = false,
-    ignore_buffer_on_setup = false,
-    open_on_setup = false,
-    open_on_setup_file = false,
     open_on_tab = false,
     sort_by = function(nodes) table.sort(nodes, natural_cmp) end,
     update_cwd = false,
@@ -108,7 +105,6 @@ if ok then
       update_cwd = false,
       ignore_list = {},
     },
-    ignore_ft_on_setup = {},
     system_open = {
       cmd = '',
       args = {},
