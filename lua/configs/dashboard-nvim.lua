@@ -9,7 +9,7 @@ if ok then
       },
       shortcut = {
         {
-          icon = '  ',
+          icon = '󰁡  ',
           desc = 'Update',
           group = '@property',
           action = 'PackerSync',
