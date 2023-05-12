@@ -7,8 +7,8 @@ if ok then
     user_icon = ' ',                        -- user icon
     timeline_marker = '',                   -- timeline marker
     timeline_indent = '2',                     -- timeline indentation
-    right_bubble_delimiter = '',            -- Bubble delimiter
-    left_bubble_delimiter = '',             -- Bubble delimiter
+    right_bubble_delimiter = '',            -- Bubble delimiter
+    left_bubble_delimiter = '',             -- Bubble delimiter
     github_hostname = '',                      -- GitHub Enterprise host
     snippet_context_lines = 4,                 -- number or lines around commented lines
     file_panel = {
