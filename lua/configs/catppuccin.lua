@@ -9,7 +9,8 @@ if ok then
       telescope = true,
       notify = true,
       harpoon = true,
-      sandwich = true
+      sandwich = true,
+      octo = true,
     }
   }
 end
