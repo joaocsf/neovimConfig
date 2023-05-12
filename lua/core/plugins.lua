@@ -275,6 +275,8 @@ local function plugins(use)
     config = conf 'nvim-metals',
   }
 
+  use 'tpope/vim-liquid'
+
   use 'will133/vim-dirdiff'
 end
 
