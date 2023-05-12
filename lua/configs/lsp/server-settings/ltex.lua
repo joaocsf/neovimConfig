@@ -1,7 +1,8 @@
 local ok, lspconfig = pcall(require, 'lspconfig')
 
 local language_id_mapping = {
-  gitcommit = 'markdown'
+  gitcommit = 'markdown',
+  vimwiki = 'markdown'
 }
 
 local opts = {
