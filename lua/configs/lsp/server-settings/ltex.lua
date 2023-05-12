@@ -19,7 +19,7 @@ if ok then
       if language_id then
         return language_id
       else
-        lspconfig['ltex'].default_config.get_language_id(arg, filetype)
+        lspconfig['ltex'].document_config.default_config.get_language_id(arg, filetype)
       end
     end
   })
