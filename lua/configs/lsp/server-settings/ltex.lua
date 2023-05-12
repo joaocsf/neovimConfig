@@ -1,5 +1,8 @@
 local ok, lspconfig = pcall(require, 'lspconfig')
 
+local language_id_mapping = {
+  gitcommit = 'markdown'
+}
 
 local opts = {
   capabilities = {
@@ -9,8 +12,16 @@ local opts = {
 
 if ok then
   local tbl_deep_extend = vim.tbl_deep_extend
-  tbl_deep_extend('force', opts, {
-    filetypes = { 'vimwiki', 'text', 'txt', unpack(lspconfig['ltex'].filetypes) }
+  opts = tbl_deep_extend('force', opts, {
+    filetypes = { 'vimwiki', 'text', 'txt', unpack(lspconfig['ltex'].filetypes) },
+    get_language_id = function(arg, filetype)
+      local language_id = language_id_mapping[filetype]
+      if language_id then
+        return language_id
+      else
+        lspconfig['ltex'].default_config.get_language_id(arg, filetype)
+      end
+    end
   })
 end
 
