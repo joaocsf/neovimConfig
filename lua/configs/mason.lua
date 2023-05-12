@@ -7,6 +7,5 @@ if ok then
   }
   require 'mason-nvim-dap'.setup()
 
-  print 'requiring lsp'
   require 'configs.lsp'
 end
