@@ -17,6 +17,7 @@ o.scrolloff = 8
 o.wildmenu = true
 o.splitbelow = true
 o.splitright = true
+o.signcolumn = 'yes'
 
 wo.number = false
 wo.wrap = false
