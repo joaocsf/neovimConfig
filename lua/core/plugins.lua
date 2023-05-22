@@ -42,6 +42,11 @@ local function plugins(use)
 
   use 'folke/tokyonight.nvim'
 
+  use { 'folke/todo-comments.nvim',
+    requires = 'nvim-lua/plenary.nvim',
+    config = conf 'todo-comments'
+  }
+
   -- LSPs/DAPS
   use {
     'williamboman/mason.nvim',
