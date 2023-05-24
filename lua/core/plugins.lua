@@ -288,6 +288,11 @@ local function plugins(use)
     'folke/trouble.nvim',
     config = conf 'trouble'
   }
+
+  use {
+    'stevearc/oil.nvim',
+    config = conf 'oil'
+  }
 end
 
 return require 'packer'.startup {
