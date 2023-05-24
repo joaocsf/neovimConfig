@@ -1,5 +1,6 @@
-
 vim.cmd "let g:vimwiki_list = [{'path': '~/vimwiki/','syntax': 'markdown', 'ext': '.md'}]"
+
+vim.cmd "let g:vimwiki_ext2syntax = {'.md': 'markdown', '.mkdn': 'markdown', '.mdwn': 'markdown', '.mdown': 'markdown', '.markdown': 'markdown', '.mw': 'media', '.mdx': 'markdown'}"
 
 vim.cmd [=[function! VimwikiLinkHandler(link)
     " Use Vim to open external files with the 'vfile:' scheme.  E.g.:
