@@ -10,7 +10,8 @@ if ok then
   metals_config.on_attach = function(client, bufnr)
     metals.setup_dap()
     require 'configs.lsp.handlers'.on_attach(client, bufnr)
-    vim.keymap.set('n', '<leader>mws', '<cmd>lua require"metals".worksheet_hover()<cr>', { desc = 'Metals Worksheet' })
+    vim.keymap.set('n', '<leader>mh', '<cmd>lua require"metals".hover_worksheet()<cr>',
+      { desc = 'Metals Hover Worksheet' })
     map('n', '<leader>lm', function()
       local ok_telescope, telescope = pcall(require, 'telescope')
       if ok_telescope then
