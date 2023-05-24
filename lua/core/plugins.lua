@@ -283,6 +283,11 @@ local function plugins(use)
   use 'tpope/vim-liquid'
 
   use 'will133/vim-dirdiff'
+
+  use {
+    'folke/trouble.nvim',
+    config = conf 'trouble'
+  }
 end
 
 return require 'packer'.startup {
