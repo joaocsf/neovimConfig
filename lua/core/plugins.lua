@@ -293,6 +293,8 @@ local function plugins(use)
     'stevearc/oil.nvim',
     config = conf 'oil'
   }
+
+  use 'kchmck/vim-coffee-script'
 end
 
 return require 'packer'.startup {
