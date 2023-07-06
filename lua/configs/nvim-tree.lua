@@ -126,7 +126,7 @@ if ok then
     },
     filesystem_watchers = {
       enable = true,
-      debounce_delay = 50,
+      debounce_delay = 500,
     },
     git = {
       enable = true,
