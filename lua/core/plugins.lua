@@ -30,7 +30,7 @@ local function plugins(use)
 
   use 'savq/melange'
 
-  use 'rose-pine/neovim'
+  use { 'rose-pine/neovim', as = 'rose-pine' }
 
   use 'sainnhe/edge'
 
