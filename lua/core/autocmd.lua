@@ -19,6 +19,14 @@ autocmd('BufWritePre', {
   group = group,
 })
 
+autocmd('BufReadPost', {
+  callback = function()
+    if vim.fn.getfsize(vim.fn.expand '%') > 10000000 then
+      vim.cmd 'syntax clear'
+    end
+  end
+})
+
 -- TODO: Temporary Fix: https://github.com/nvim-telescope/telescope.nvim/issues/2027
 autocmd('WinLeave', {
   callback = function()
