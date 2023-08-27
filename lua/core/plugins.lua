@@ -295,6 +295,8 @@ local function plugins(use)
   }
 
   use 'kchmck/vim-coffee-script'
+
+  use 'stevearc/vim-arduino'
 end
 
 return require 'packer'.startup {
