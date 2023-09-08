@@ -11,6 +11,9 @@ if ok then
       harpoon = true,
       sandwich = true,
       octo = true,
+      vimwiki = true,
+      which_key = true,
+      markdown = true,
     }
   }
 end
