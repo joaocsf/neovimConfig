@@ -258,3 +258,7 @@ end, { desc = 'Unstage git hunk' })
 map('n', '<leader>gd', function()
   require 'gitsigns'.diffthis()
 end, { desc = 'View git diff' })
+
+-- Go to link/file
+map('n', 'gx', ':lua vim.ui.open(\'<cfile>\')<cr>',
+  { desc = 'Open file' })
