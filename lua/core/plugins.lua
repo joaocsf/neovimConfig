@@ -297,6 +297,12 @@ local function plugins(use)
   use 'kchmck/vim-coffee-script'
 
   use 'stevearc/vim-arduino'
+
+  use 'gpanders/vim-medieval'
+
+  use { 'cshuaimin/ssr.nvim',
+    config = conf 'ssr'
+  }
 end
 
 return require 'packer'.startup {
