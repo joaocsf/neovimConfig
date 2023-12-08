@@ -9,5 +9,5 @@ g['vrc_curl_opts'] = {
 }
 g['vrc_response_default_content_type'] = 'application/json'
 
-map('n', '<C-q>', ':call VrcQuery()<cr>', { desc = 'Send Request', nowait = true, silent = true })
+map('n', '<C-q>',      ':call VrcQuery()<cr>', { desc = 'Send Request', nowait = true, silent = true })
 map('n', '<leader>rs', ':call VrcQuery()<cr>', { desc = 'Send Request', nowait = true, silent = true })

@@ -7,7 +7,7 @@ local function natural_cmp(l, r)
     local function padnum(d) return ('%03d%s'):format(#d, d) end
 
     return tostring(a):gsub('%.?%d+', padnum) .. ('%3d'):format(#b)
-        < tostring(b):gsub('%.?%d+', padnum) .. ('%3d'):format(#a)
+      < tostring(b):gsub('%.?%d+', padnum) .. ('%3d'):format(#a)
   else
     return l.type < r.type
   end

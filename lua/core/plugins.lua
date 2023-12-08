@@ -303,6 +303,8 @@ local function plugins(use)
   use { 'cshuaimin/ssr.nvim',
     config = conf 'ssr'
   }
+
+  use 'NoahTheDuke/vim-just'
 end
 
 return require 'packer'.startup {

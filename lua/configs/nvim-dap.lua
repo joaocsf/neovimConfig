@@ -5,11 +5,11 @@ local ok_dapvt, dapvt = pcall(require, 'nvim-dap-virtual-text')
 if ok_dap and ok_dapui and ok_dapvt then
   local dap_ui_widgets = require 'dap.ui.widgets'
 
-  vim.fn.sign_define('DapBreakpoint', { text = '⬤ ', texthl = 'red', linehl = '', numhl = '' })
+  vim.fn.sign_define('DapBreakpoint',          { text = '⬤ ', texthl = 'red', linehl = '', numhl = '' })
   vim.fn.sign_define('DapBreakpointCondition', { text = '⦿ ', texthl = 'orange', linehl = '', numhl = '' })
-  vim.fn.sign_define('DapLogPoint', { text = '⬤ ', texthl = 'blue', linehl = '', numhl = '' })
-  vim.fn.sign_define('DapStopped', { text = '➡️ ', texthl = 'blue', linehl = '', numhl = '' })
-  vim.fn.sign_define('DapBreakpointRejected', { text = ' ', texthl = 'red', linehl = '', numhl = '' })
+  vim.fn.sign_define('DapLogPoint',            { text = '⬤ ', texthl = 'blue', linehl = '', numhl = '' })
+  vim.fn.sign_define('DapStopped',             { text = '➡️ ', texthl = 'blue', linehl = '', numhl = '' })
+  vim.fn.sign_define('DapBreakpointRejected',  { text = ' ', texthl = 'red', linehl = '', numhl = '' })
 
   -- Mappings
   vim.keymap.set('n', '<F1>', function() dap.continue() end,

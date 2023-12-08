@@ -18,11 +18,11 @@ vim.g.mapleader = ' '
 
 -- Packer
 map('n', '<leader>pc', '<cmd>PackerCompile<cr>', { desc = 'Packer Compile' })
-map('n', '<leader>pC', '<cmd>PackerClean<cr>', { desc = 'Packer Clean' })
+map('n', '<leader>pC', '<cmd>PackerClean<cr>',   { desc = 'Packer Clean' })
 map('n', '<leader>pi', '<cmd>PackerInstall<cr>', { desc = 'Packer Install' })
-map('n', '<leader>ps', '<cmd>PackerSync<cr>', { desc = 'Packer Sync' })
-map('n', '<leader>pS', '<cmd>PackerStatus<cr>', { desc = 'Packer Status' })
-map('n', '<leader>pu', '<cmd>PackerUpdate<cr>', { desc = 'Packer Update' })
+map('n', '<leader>ps', '<cmd>PackerSync<cr>',    { desc = 'Packer Sync' })
+map('n', '<leader>pS', '<cmd>PackerStatus<cr>',  { desc = 'Packer Status' })
+map('n', '<leader>pu', '<cmd>PackerUpdate<cr>',  { desc = 'Packer Update' })
 
 -- Trouble
 map('n', '<leader>xx', '<cmd>TroubleToggle<cr>',
@@ -46,20 +46,20 @@ map('n', 'gR', '<cmd>TroubleToggle lsp_references<cr>',
 
 -- NVim-Tree
 map('n', '<leader>e', '<cmd>NvimTreeToggle<cr>', { desc = 'NvimTree Toggle' })
-map('n', '<leader>o', '<cmd>NvimTreeFocus<cr>', { desc = 'NvimTree Focus' })
+map('n', '<leader>o', '<cmd>NvimTreeFocus<cr>',  { desc = 'NvimTree Focus' })
 
 -- Buffers
 -- bufferdelete
-map('n', '<leader>q', '<cmd>Bdelete<cr>', { desc = 'Close buffer' })
+map('n', '<leader>q',  '<cmd>Bdelete<cr>',                             { desc = 'Close buffer' })
 map('n', '<leader>ca', '<cmd>w <bar> %bd <bar> e# <bar> bd# <cr><cr>', { desc = 'Close all buffers' })
 
 -- bufferline
 map('n', '<S-k>', '<cmd>BufferLineCycleNext<cr>', { desc = 'Next buffer tab' })
 map('n', '<S-j>', '<cmd>BufferLineCyclePrev<cr>', { desc = 'Previous buffer tab' })
-map('n', '>b', '<cmd>BufferLineMoveNext<cr>', { desc = 'Move buffer tab right' })
-map('n', '<b', '<cmd>BufferLineMovePrev<cr>', { desc = 'Move buffer tab left' })
-map('n', '<S-l>', '<cmd>BufferLineMoveNext<cr>', { desc = 'Move buffer tab right' })
-map('n', '<S-h>', '<cmd>BufferLineMovePrev<cr>', { desc = 'Move buffer tab left' })
+map('n', '>b',    '<cmd>BufferLineMoveNext<cr>',  { desc = 'Move buffer tab right' })
+map('n', '<b',    '<cmd>BufferLineMovePrev<cr>',  { desc = 'Move buffer tab left' })
+map('n', '<S-l>', '<cmd>BufferLineMoveNext<cr>',  { desc = 'Move buffer tab right' })
+map('n', '<S-h>', '<cmd>BufferLineMovePrev<cr>',  { desc = 'Move buffer tab left' })
 
 -- Smart Splits
 -- Better window navigation
@@ -227,7 +227,7 @@ map('n', '<leader>gg', function()
 end, { desc = 'Lazygit' })
 
 --Toggle Term
-map('n', '<C-\\>', '<cmd>ToggleTerm<cr>', { desc = 'Toggle Terminal' })
+map('n', '<C-\\>',     '<cmd>ToggleTerm<cr>', { desc = 'Toggle Terminal' })
 map('n', '<leader>tt', '<cmd>ToggleTerm<cr>', { desc = 'Toggle Terminal' })
 
 -- Git Signs
