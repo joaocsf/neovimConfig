@@ -31,7 +31,7 @@ if ok then
     end
 
     if has_overrides then
-      opts = tbl_deep_extend('force', overrides, opts)
+      opts = tbl_deep_extend('force', opts, overrides)
     end
 
     lspconfig[server_name].setup(opts)

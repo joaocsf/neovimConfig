@@ -7,9 +7,9 @@ local ok_telescope, telescope = pcall(require, 'telescope.builtin')
 function M.setup()
   local signs = {
     { name = 'DiagnosticSignError', text = '' },
-    { name = 'DiagnosticSignWarn',  text = '' },
-    { name = 'DiagnosticSignHint',  text = '󰌵' },
-    { name = 'DiagnosticSignInfo',  text = '' },
+    { name = 'DiagnosticSignWarn', text = '' },
+    { name = 'DiagnosticSignHint', text = '󰌵' },
+    { name = 'DiagnosticSignInfo', text = '' },
   }
 
   for _, sign in ipairs(signs) do
@@ -64,7 +64,7 @@ M.on_attach = function(client, bufnr)
       local line, _ = unpack(vim.api.nvim_win_get_cursor(0))
       lastDiagnosticBuffer = vim.api.nvim_buf_is_valid(lastDiagnosticBuffer or -1) and lastDiagnosticBuffer or nil
       if (#vim.diagnostic.get(0, { lnum = line - 1, severity = { min = vim.diagnostic.severity.HINT } }) > 0
-            and lastDiagnosticBuffer == nil) then
+          and lastDiagnosticBuffer == nil) then
         lastDiagnosticBuffer, _ = vim.diagnostic.open_float()
       else
         vim.lsp.buf.hover()
@@ -83,6 +83,9 @@ M.on_attach = function(client, bufnr)
   map('n', '<leader>lh', function()
     vim.lsp.buf.signature_help()
   end, { desc = 'Signature help', buffer = bufnr })
+  map('n', '<leader>lH', function()
+    vim.lsp.inlay_hint(0, nil)
+  end, { desc = 'Toggle Inlay Hints', buffer = bufnr })
   map('i', '<C-h>', function()
     vim.lsp.buf.signature_help()
   end, { desc = 'Signature help', buffer = bufnr })
@@ -113,7 +116,7 @@ M.on_attach = function(client, bufnr)
     vim.diagnostic.open_float()
   end, { desc = 'Hover diagnostics', buffer = bufnr })
 
-  map('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, { desc = 'Add Workspace', buffer = bufnr })
+  map('n', '<leader>wa', vim.lsp.buf.add_workspace_folder,    { desc = 'Add Workspace', buffer = bufnr })
   map('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, { desc = 'Remove Workspace', buffer = bufnr })
   map('n', '<leader>wl', function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
