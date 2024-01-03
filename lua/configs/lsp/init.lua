@@ -5,8 +5,10 @@ if ok then
   handlers.setup()
 
   local servers = require 'mason-lspconfig'.get_installed_servers()
+  local additional_servers = { 'ocamllsp' }
+  local all_servers = tbl_deep_extend('force', servers, additional_servers)
 
-  for _, server_name in ipairs(servers) do
+  for _, server_name in ipairs(all_servers) do
     local has_overrides, overrides = pcall(require, 'configs.lsp.server-settings.' .. server_name)
 
     local old_on_attach = lspconfig[server_name].on_attach
