@@ -5,7 +5,7 @@ if ok then
   handlers.setup()
 
   local servers = require 'mason-lspconfig'.get_installed_servers()
-  local additional_servers = { 'ocamllsp' }
+  local additional_servers = { 'ocamllsp', 'ols' }
   local all_servers = tbl_deep_extend('force', servers, additional_servers)
 
   for _, server_name in ipairs(all_servers) do
