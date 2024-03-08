@@ -84,20 +84,19 @@ if ok then
     mapping = {
       ['<Up>'] = cmp.mapping.select_prev_item(),
       ['<Down>'] = cmp.mapping.select_next_item(),
-      ['<C-p>'] = cmp.mapping.select_prev_item(),
-      ['<C-n>'] = cmp.mapping.select_next_item(),
+      -- ['<C-p>'] = cmp.mapping.select_prev_item(),
+      -- ['<C-n>'] = cmp.mapping.select_next_item(),
       -- ["<C-k>"] = cmp.mapping.select_prev_item(),
       -- ["<C-j>"] = cmp.mapping.select_next_item(),
       ['<C-k>'] = cmp.mapping(cmp.mapping.scroll_docs(-1), { 'i', 'c' }),
       ['<C-j>'] = cmp.mapping(cmp.mapping.scroll_docs(1), { 'i', 'c' }),
       ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-      ['<C-y>'] = cmp.config.disable,
       ['<C-e>'] = cmp.mapping {
         i = cmp.mapping.abort(),
         c = cmp.mapping.close(),
       },
-      ['<CR>'] = cmp.mapping.confirm { select = false },
-      ['<Tab>'] = cmp.mapping(function(fallback)
+      ['<C-y>'] = cmp.mapping.confirm { select = false },
+      ['<C-n>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
         elseif ok_luasnip and luasnip.expandable() then
@@ -113,7 +112,7 @@ if ok then
         'i',
         's',
       }),
-      ['<S-Tab>'] = cmp.mapping(function(fallback)
+      ['<C-p>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_prev_item()
         elseif ok_luasnip and luasnip.jumpable(-1) then
