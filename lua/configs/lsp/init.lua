@@ -6,7 +6,7 @@ if ok then
 
   local servers = require 'mason-lspconfig'.get_installed_servers()
   local additional_servers = { 'ocamllsp', 'ols' }
-  local all_servers = tbl_deep_extend('force', servers, additional_servers)
+  local all_servers = vim.list_extend(servers, additional_servers)
 
   for _, server_name in ipairs(all_servers) do
     local has_overrides, overrides = pcall(require, 'configs.lsp.server-settings.' .. server_name)
