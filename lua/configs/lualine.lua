@@ -9,11 +9,11 @@ local metals_status = {
 }
 
 local lsp_status = {
-  cond = function() return next(vim.lsp.get_active_clients()) ~= nil end,
+  cond = function() return next(vim.lsp.get_clients()) ~= nil end,
   function()
     local msg = 'No Active Lsp'
     local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
-    local clients = vim.lsp.get_active_clients()
+    local clients = vim.lsp.get_clients()
     if next(clients) == nil then
       return msg
     end
