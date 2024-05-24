@@ -155,12 +155,6 @@ local function plugins(use)
 
   use 'phaazon/hop.nvim'
 
-  use {
-    'jose-elias-alvarez/null-ls.nvim',
-    event = { 'BufRead', 'BufNewFile' },
-    config = conf 'null-ls'
-  }
-
   use 'ggandor/lightspeed.nvim'
 
   use {
