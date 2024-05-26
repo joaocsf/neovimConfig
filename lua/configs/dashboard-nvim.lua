@@ -12,7 +12,7 @@ if ok then
           icon = '󰁡  ',
           desc = 'Update',
           group = '@property',
-          action = 'PackerSync',
+          action = 'Lazy sync',
           key = 'u'
         },
         {

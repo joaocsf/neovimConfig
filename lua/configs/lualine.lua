@@ -38,7 +38,7 @@ if ok then
       section_separators = { left = '', right = '' },
       disabled_filetypes = {
         statusline = {},
-        winbar = { 'packer', 'NvimTree', 'dap-repl', 'dapui_console', 'dapui_watches', 'dapui_stacks',
+        winbar = { 'NvimTree', 'dap-repl', 'dapui_console', 'dapui_watches', 'dapui_stacks',
           'dapui_breakpoints', 'dapui_scopes' },
       },
       ignore_focus = {},

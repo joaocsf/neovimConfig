@@ -16,14 +16,6 @@ end
 
 vim.g.mapleader = ' '
 
--- Packer
-map('n', '<leader>pc', '<cmd>PackerCompile<cr>', { desc = 'Packer Compile' })
-map('n', '<leader>pC', '<cmd>PackerClean<cr>',   { desc = 'Packer Clean' })
-map('n', '<leader>pi', '<cmd>PackerInstall<cr>', { desc = 'Packer Install' })
-map('n', '<leader>ps', '<cmd>PackerSync<cr>',    { desc = 'Packer Sync' })
-map('n', '<leader>pS', '<cmd>PackerStatus<cr>',  { desc = 'Packer Status' })
-map('n', '<leader>pu', '<cmd>PackerUpdate<cr>',  { desc = 'Packer Update' })
-
 -- Trouble
 map('n', '<leader>xx', '<cmd>TroubleToggle<cr>',
   { silent = true, noremap = true, desc = 'Trouble Toggle' }

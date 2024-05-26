@@ -99,10 +99,7 @@ local plugins = {
     config = conf 'nui'
   },
 
-  {
-    'machakann/vim-sandwich',
-    config = conf 'vim-sandwich',
-  },
+  'tpope/vim-surround',
 
   'mrjones2014/smart-splits.nvim',
 
