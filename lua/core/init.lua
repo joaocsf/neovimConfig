@@ -1,6 +1,8 @@
 for _, plugin in ipairs {
-  'core.plugins',
+  'core.bootstrap',
   'core.options',
+  'core.plugins',
+  'core.post-plugin',
   'core.keymaps',
   'core.autocmd',
 } do

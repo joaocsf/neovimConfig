@@ -45,10 +45,9 @@ vim.opt.listchars:append 'eol:'
 
 vim.opt.termguicolors = true
 
-pcall(vim.cmd, 'set ls=3')
-pcall(vim.cmd, 'set path+=**')
-pcall(vim.cmd, 'colorscheme gruvbox-material')
-pcall(vim.cmd, 'syntax on')
+vim.cmd 'set ls=3'
+vim.cmd 'set path+=**'
+vim.cmd 'syntax on'
 
 vim.opt_global.shortmess:remove 'F'
 
@@ -58,3 +57,4 @@ vim.g.neovide_refresh_rate = 144
 vim.g.neovide_no_idle = true
 vim.g.neovide_remember_window_position = true
 vim.g.neovide_remember_window_size = true
+vim.g.mapleader = ' '

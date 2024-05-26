@@ -1,5 +1,3 @@
-pcall(require, 'impatient')
-
 local ok, err = pcall(require, 'core')
 
 if not ok then

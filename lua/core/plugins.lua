@@ -1,128 +1,120 @@
--- Only required if you have packer configured as `opt`
-vim.cmd [[packadd packer.nvim]]
-
 local function conf(cfg)
-  return string.format('require"configs.%s"', cfg)
+  return function()
+    local module = string.format('configs.%s', cfg)
+    local ok, err = pcall(require, module)
+    if not ok then
+      print("Failed to load: '" .. module .. "' Error:" .. err)
+    end
+  end
 end
 
-local function plugins(use)
-  -- Packer
-  use 'wbthomason/packer.nvim'
-
-  use 'lewis6991/impatient.nvim'
-
-  use 'morhetz/gruvbox'
-
-  use 'nyoom-engineering/oxocarbon.nvim'
-
-  use 'Yazeed1s/oh-lucy.nvim'
-
-  use 'marko-cerovac/material.nvim'
-
-  use { 'catppuccin/nvim',
-    as = 'catppuccin',
-    config = conf 'catppuccin'
-  }
-
-  use 'sainnhe/gruvbox-material'
-
-  use 'EdenEast/nightfox.nvim'
-
-  use 'savq/melange'
-
-  use { 'rose-pine/neovim', as = 'rose-pine' }
-
-  use 'sainnhe/edge'
-
-  use 'sainnhe/sonokai'
-
-  use 'sainnhe/everforest'
-
-  use 'rebelot/kanagawa.nvim'
-
-  use 'folke/tokyonight.nvim'
-
-  use { 'folke/todo-comments.nvim',
-    requires = 'nvim-lua/plenary.nvim',
-    config = conf 'todo-comments'
-  }
+local plugins = {
+  -- Themes
+  { 'morhetz/gruvbox',                  lazy = false,   priority = 1000 },
+  { 'nyoom-engineering/oxocarbon.nvim', priority = 1000 },
+  { 'Yazeed1s/oh-lucy.nvim',            priority = 1000 },
+  { 'marko-cerovac/material.nvim',      priority = 1000 },
+  { 'sainnhe/gruvbox-material',         lazy = false,   priority = 1000 },
+  { 'EdenEast/nightfox.nvim',           priority = 1000 },
+  { 'sainnhe/edge',                     priority = 1000 },
+  { 'savq/melange',                     priority = 1000 },
+  { 'sainnhe/sonokai',                  priority = 1000 },
+  { 'sainnhe/everforest',               priority = 1000 },
+  { 'rebelot/kanagawa.nvim',            priority = 1000 },
+  { 'folke/tokyonight.nvim',            priority = 1000 },
+  {
+    'catppuccin/nvim',
+    name = 'catppuccin',
+    config = conf 'catppuccin',
+    priority = 1000
+  },
+  {
+    'rose-pine/neovim',
+    name = 'rose-pine',
+    priority = 1000
+  },
+  {
+    'folke/todo-comments.nvim',
+    dependencies = 'nvim-lua/plenary.nvim',
+    config = conf 'todo-comments',
+    priority = 1000
+  },
 
   -- LSPs/DAPS
-  use {
+  'nvim-neotest/nvim-nio',
+
+  -- LSPs/DAPS
+  {
     'williamboman/mason.nvim',
-    requires = {
+    dependencies = {
       'williamboman/mason-lspconfig.nvim',
       'jay-babu/mason-nvim-dap.nvim',
       'neovim/nvim-lspconfig',
     },
-    run = ':MasonUpdate',
+    build = ':MasonUpdate',
     config = conf 'mason'
-  }
-
-  use {
+  },
+  {
     'rcarriga/nvim-dap-ui',
-    requires = {
+    dependencies = {
       'mfussenegger/nvim-dap',
+      'nvim-neotest/nvim-nio',
       'theHamsta/nvim-dap-virtual-text',
       'ldelossa/nvim-dap-projects'
     },
     config = conf 'nvim-dap'
-  }
+  },
 
   -- Misc
-
-  use {
+  {
     'nvim-telescope/telescope.nvim',
-    requires = {
+    dependencies = {
       { 'nvim-lua/plenary.nvim' },
       { 'nvim-telescope/telescope-live-grep-args.nvim' },
       { 'nvim-telescope/telescope-ui-select.nvim' }
     },
     config = conf 'telescope'
-  }
-
-  use {
+  },
+  {
     'nvim-telescope/telescope-fzf-native.nvim',
-    run =
+    build =
     'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
-  }
+  },
 
-  use 'famiu/bufdelete.nvim'
+  'famiu/bufdelete.nvim',
 
-  use 'kyazdani42/nvim-web-devicons'
-
-  use {
+  'kyazdani42/nvim-web-devicons',
+  {
     'akinsho/bufferline.nvim',
-    requires = 'kyazdani42/nvim-web-devicons',
+    dependencies = 'kyazdani42/nvim-web-devicons',
     config = conf 'bufferline',
-  }
-
-  use {
+  },
+  {
     'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate',
+    build = ':TSUpdate',
     config = conf 'tree-sitter',
-  }
-
-  use { 'MunifTanjim/nui.nvim',
+  },
+  {
+    'MunifTanjim/nui.nvim',
     config = conf 'nui'
-  }
+  },
 
-  use {
+  {
     'machakann/vim-sandwich',
     config = conf 'vim-sandwich',
-  }
+  },
 
-  use 'mrjones2014/smart-splits.nvim'
+  'mrjones2014/smart-splits.nvim',
 
-  use {
+  {
     'windwp/nvim-autopairs',
     event = 'InsertEnter',
     config = conf 'autopairs',
-  }
+  },
 
-  use {
+  {
     'hrsh7th/nvim-cmp',
-    requires = {
+    dependencies = {
       'L3MON4D3/LuaSnip',
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
@@ -132,180 +124,180 @@ local function plugins(use)
       'saadparwaiz1/cmp_luasnip',
     },
     config = conf 'nvim-cmp',
-  }
+  },
 
-  use {
+  {
     'numToStr/Comment.nvim',
     config = conf 'Comment',
-  }
+  },
 
-  use 'windwp/nvim-ts-autotag'
+  'windwp/nvim-ts-autotag',
 
-  use 'p00f/nvim-ts-rainbow'
+  'p00f/nvim-ts-rainbow',
 
-  use 'wellle/targets.vim'
+  'wellle/targets.vim',
 
-  use { 'folke/which-key.nvim',
+  {
+    'folke/which-key.nvim',
     config = conf 'which-key'
-  }
+  },
 
-  use { 'norcalli/nvim-colorizer.lua',
+  {
+    'norcalli/nvim-colorizer.lua',
     config = conf 'nvim-colorizer'
-  }
+  },
 
-  use 'phaazon/hop.nvim'
+  'phaazon/hop.nvim',
 
-  use 'ggandor/lightspeed.nvim'
+  'ggandor/lightspeed.nvim',
 
-  use {
+  {
     'nvim-lualine/lualine.nvim',
-    requires = { 'nvim-tree/nvim-web-devicons', opt = true },
+    dependencies = { 'nvim-tree/nvim-web-devicons', opt = true },
     config = conf 'lualine',
-  }
+  },
 
-  use {
+  {
     'lewis6991/gitsigns.nvim',
     config = conf 'gitsigns',
-  }
+  },
 
-  use {
+  {
     'akinsho/nvim-toggleterm.lua',
     cmd = 'ToggleTerm',
-    module = { 'toggleterm', 'toggleterm.terminal' },
     config = conf 'toggleterm'
-  }
+  },
 
-  use {
+  {
     'diepm/vim-rest-console',
-    setup = conf 'vim-rest-console'
-  }
+    init = conf 'vim-rest-console'
+  },
 
-  use { 'rcarriga/nvim-notify',
-    setup = conf 'nvim-notify'
-  }
+  {
+    'rcarriga/nvim-notify',
+    init = conf 'nvim-notify'
+  },
 
-  use 'nvim-lua/plenary.nvim'
+  'nvim-lua/plenary.nvim',
 
-  use { 'ThePrimeagen/harpoon',
+  {
+    'ThePrimeagen/harpoon',
     config = conf 'harpoon'
-  }
+  },
 
-  use {
+  {
     'sindrets/diffview.nvim',
-    requires = 'nvim-lua/plenary.nvim',
+    dependencies = 'nvim-lua/plenary.nvim',
     config = conf 'diffview'
-  }
+  },
 
-  use {
+  {
     'pwntester/octo.nvim',
-    requires = {
+    dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-telescope/telescope.nvim',
       'kyazdani42/nvim-web-devicons',
     },
     config = conf 'octo'
-  }
+  },
 
-  use 'tpope/vim-fugitive'
+  'tpope/vim-fugitive',
 
-  use 'tpope/vim-rhubarb'
+  'tpope/vim-rhubarb',
 
-  use 'ray-x/lsp_signature.nvim'
+  'ray-x/lsp_signature.nvim',
 
-  use {
+  {
     'vimwiki/vimwiki',
     config = conf 'vimwiki'
-  }
+  },
 
-  use {
+  {
     'nvim-tree/nvim-tree.lua',
-    requires = {
+    dependencies = {
       'kyazdani42/nvim-web-devicons',
     },
     config = conf 'nvim-tree'
-  }
+  },
 
-  use {
+  {
     'folke/lsp-colors.nvim',
     config = conf 'lsp-colors'
-  }
+  },
 
-  use {
+  {
     'nvim-treesitter/nvim-treesitter-context',
     config = conf 'treesitter-context'
-  }
+  },
 
-  use { 'onsails/lspkind.nvim',
+  {
+    'onsails/lspkind.nvim',
     config = conf 'lspkind'
-  }
+  },
 
-  use 'nvim-treesitter/playground'
+  'nvim-treesitter/playground',
 
-  use 'kyoh86/vim-jsonl'
+  'kyoh86/vim-jsonl',
 
-  use 'alunny/pegjs-vim'
+  'alunny/pegjs-vim',
 
-  use {
+  {
     'iamcco/markdown-preview.nvim',
-    run = 'cd app && npm install',
-    setup = function() vim.g.mkdp_filetypes = { 'markdown' } end,
+    build = 'cd app && npm install',
+    init = function() vim.g.mkdp_filetypes = { 'markdown' } end,
     ft = { 'markdown', 'vimwiki' },
-  }
+  },
 
-  use 'godlygeek/tabular'
+  'godlygeek/tabular',
 
-  use 'rhysd/vim-grammarous'
+  'rhysd/vim-grammarous',
 
-  use {
+  {
     'nvimdev/dashboard-nvim',
     config = conf 'dashboard-nvim'
-  }
+  },
 
-  use 'nvim-telescope/telescope-symbols.nvim'
+  'nvim-telescope/telescope-symbols.nvim',
 
   -- Language Specific
 
-  use {
+  {
     'scalameta/nvim-metals',
-    requires = {
+    dependencies = {
       'nvim-lua/plenary.nvim',
       'hrsh7th/nvim-cmp',
     },
     config = conf 'nvim-metals',
-  }
+  },
 
-  use 'tpope/vim-liquid'
+  'tpope/vim-liquid',
 
-  use 'will133/vim-dirdiff'
+  'will133/vim-dirdiff',
 
-  use {
+  {
     'folke/trouble.nvim',
     config = conf 'trouble'
-  }
+  },
 
-  use {
+  {
     'stevearc/oil.nvim',
     config = conf 'oil'
-  }
+  },
 
-  use 'kchmck/vim-coffee-script'
+  'kchmck/vim-coffee-script',
 
-  use 'stevearc/vim-arduino'
+  'stevearc/vim-arduino',
 
-  use 'gpanders/vim-medieval'
+  'gpanders/vim-medieval',
 
-  use { 'cshuaimin/ssr.nvim',
+  {
+    'cshuaimin/ssr.nvim',
     config = conf 'ssr'
-  }
+  },
 
-  use 'NoahTheDuke/vim-just'
-end
-
-return require 'packer'.startup {
-  plugins,
-  config = {
-    display = {
-      open_fn = require 'packer.util'.float,
-    }
-  }
+  'NoahTheDuke/vim-just',
 }
+
+local opts = {}
+
+require 'lazy'.setup(plugins, opts)
