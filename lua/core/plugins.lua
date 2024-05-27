@@ -83,10 +83,10 @@ local plugins = {
 
   'famiu/bufdelete.nvim',
 
-  'kyazdani42/nvim-web-devicons',
+  'nvim-tree/nvim-web-devicons',
   {
     'akinsho/bufferline.nvim',
-    dependencies = 'kyazdani42/nvim-web-devicons',
+    dependencies = 'nvim-tree/nvim-web-devicons',
     config = conf 'bufferline',
   },
   {
@@ -193,7 +193,7 @@ local plugins = {
     dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-telescope/telescope.nvim',
-      'kyazdani42/nvim-web-devicons',
+      'nvim-tree/nvim-web-devicons',
     },
     config = conf 'octo'
   },
@@ -212,7 +212,7 @@ local plugins = {
   {
     'nvim-tree/nvim-tree.lua',
     dependencies = {
-      'kyazdani42/nvim-web-devicons',
+      'nvim-tree/nvim-web-devicons',
     },
     config = conf 'nvim-tree'
   },
