@@ -210,7 +210,7 @@ local plugins = {
 
   {
     'vimwiki/vimwiki',
-    config = conf 'vimwiki'
+    init = conf 'vimwiki'
   },
 
   {
