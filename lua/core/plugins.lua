@@ -99,7 +99,11 @@ local plugins = {
     config = conf 'nui'
   },
 
-  'tpope/vim-surround',
+  {
+    "kylechui/nvim-surround",
+    version = "*",
+    config = conf 'nvim-surround',
+  },
 
   'mrjones2014/smart-splits.nvim',
 
