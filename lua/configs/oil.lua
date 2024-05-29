@@ -1,7 +1,7 @@
 local ok, oil = pcall(require, 'oil')
 
 if ok then
-  vim.keymap.set('n', '<C-_>', require 'oil'.open_float, { desc = 'Open parent directory' })
+  vim.keymap.set('n', '<C-_>', require 'oil'.open, { desc = 'Open parent directory' })
 
   oil.setup {
     -- Id is automatically added at the beginning, and name at the end
@@ -49,12 +49,13 @@ if ok then
     keymaps = {
       ['g?'] = 'actions.show_help',
       ['<CR>'] = 'actions.select',
-      ['<C-s>'] = 'actions.select_vsplit',
-      ['<C-h>'] = 'actions.select_split',
+      ['<C-h>'] = false,
+      ['<C-l>'] = false,
       ['<C-t>'] = 'actions.select_tab',
       ['<C-p>'] = 'actions.preview',
-      ['<C-c>'] = 'actions.close',
-      ['<C-l>'] = 'actions.refresh',
+      ['<q>'] = 'actions.close',
+      ['<C-_>'] = 'actions.close',
+      ['<C-e>'] = 'actions.refresh',
       ['-'] = 'actions.parent',
       ['_'] = 'actions.open_cwd',
       ['`'] = 'actions.cd',
