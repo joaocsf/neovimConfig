@@ -13,16 +13,16 @@ if ok then
 
   local mappings = {}
 
-  local ok_trouble, trouble = pcall(require, 'trouble.providers.telescope')
+  local ok_trouble, trouble = pcall(require, 'trouble.sources.telescope')
   if ok_trouble then
     mappings = {
       i = {
         ['<C-s>'] = actions.select_horizontal,
-        ['<C-x>'] = trouble.open_with_trouble,
+        ['<C-x>'] = trouble.open,
         ['<C-h>'] = 'which_key'
       },
       n = {
-        ['<C-x>'] = trouble.open_with_trouble,
+        ['<C-x>'] = trouble.open,
         ['<C-s>'] = actions.select_horizontal
       },
     }
