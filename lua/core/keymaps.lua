@@ -219,7 +219,6 @@ map('n', '<leader>gg', function()
 end, { desc = 'Lazygit' })
 
 --Toggle Term
-map('n', '<C-\\>',     '<cmd>ToggleTerm<cr>', { desc = 'Toggle Terminal' })
 map('n', '<leader>tt', '<cmd>ToggleTerm<cr>', { desc = 'Toggle Terminal' })
 
 -- Git Signs
