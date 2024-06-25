@@ -26,7 +26,7 @@ function M.setup()
       focusable = false,
       style = 'minimal',
       border = 'rounded',
-      source = 'always',
+      source = true,
       header = '',
       prefix = '',
     },
@@ -123,10 +123,10 @@ M.on_attach = function(client, bufnr)
   end, { desc = 'List Workspaces', buffer = bufnr })
 
   map('n', '[d', function()
-    vim.diagnostic.goto_prev()
+    vim.diagnostic.jump { count = -1 }
   end, { desc = 'Previous diagnostic', buffer = bufnr })
   map('n', ']d', function()
-    vim.diagnostic.goto_next()
+    vim.diagnostic.jump { count = 1 }
   end, { desc = 'Next diagnostic', buffer = bufnr })
   map('n', 'gl', function()
     vim.lsp.codelens.run()
