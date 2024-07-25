@@ -140,7 +140,21 @@ local plugins = {
 
   {
     'folke/which-key.nvim',
-    config = conf 'which-key'
+    -- event = "VeryLazy",
+    config = conf 'which-key',
+    dependencies = {
+      'echasnovski/mini.icons',
+      'nvim-tree/nvim-web-devicons',
+    },
+    -- keys = {
+    --   {
+    --     "<leader>?",
+    --     function()
+    --       require("which-key").show({ global = false })
+    --     end,
+    --     desc = "Buffer Local Keymaps (which-key)",
+    --   },
+    -- },
   },
 
   {
