@@ -251,5 +251,6 @@ map('n', '<leader>gd', function()
 end, { desc = 'View git diff' })
 
 -- Go to link/file
-map('n', 'gx', ':lua vim.ui.open(\'<cfile>\')<cr>',
-  { desc = 'Open file' })
+map('n', 'gx', function()
+  vim.ui.open(vim.fn.expand('<cfile>'))
+end, { desc = 'Open file' })
