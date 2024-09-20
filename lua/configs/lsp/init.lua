@@ -19,8 +19,8 @@ if ok then
           old_on_attach(client, bufnr)
         end
         handlers.on_attach(client, bufnr)
-        if has_overrides and overrides.on_attach then
-          overrides.on_attach(client, bufnr)
+        if has_overrides and overrides._hooks_ and overrides._hooks_.on_attach then
+          overrides._hooks_.on_attach(client, bufnr)
         end
       end,
       capabilities = tbl_deep_extend('force', handlers.capabilities, lspconfig[server_name].capabilities or {}),
