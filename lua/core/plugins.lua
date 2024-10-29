@@ -312,6 +312,10 @@ local plugins = {
   },
 
   'NoahTheDuke/vim-just',
+
+  {
+    "rest-nvim/rest.nvim"
+  }
 }
 
 local opts = {}
