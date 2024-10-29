@@ -198,7 +198,10 @@ map('n', '<leader>ls', function()
   else
     require 'telescope.builtin'.lsp_document_symbols()
   end
-end, { desc = 'Search symbols' })
+end, { desc = 'Search document symbols' })
+map('n', '<leader>lS', function()
+  require 'telescope.builtin'.lsp_dynamic_workspace_symbols()
+end, { desc = 'Search workspace symbols' })
 map('n', '<leader>lR', function()
   require 'telescope.builtin'.lsp_references()
 end, { desc = 'Search references' })
