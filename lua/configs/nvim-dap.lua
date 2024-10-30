@@ -66,6 +66,6 @@ if ok_dap and ok_dapui and ok_dapvt then
   vim.fn.sign_define('DapBreakpoint',          { text = '⬤ ', texthl = 'red', linehl = '', numhl = '' })
   vim.fn.sign_define('DapBreakpointCondition', { text = '⦿ ', texthl = 'orange', linehl = '', numhl = '' })
   vim.fn.sign_define('DapLogPoint',            { text = '⬤ ', texthl = 'blue', linehl = '', numhl = '' })
-  vim.fn.sign_define('DapStopped',             { text = '➡️ ', texthl = 'blue', linehl = '', numhl = '' })
+  vim.fn.sign_define('DapStopped',             { text = '➡ ', texthl = 'blue', linehl = '', numhl = '' })
   vim.fn.sign_define('DapBreakpointRejected',  { text = ' ', texthl = 'red', linehl = '', numhl = '' })
 end
