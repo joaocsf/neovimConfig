@@ -315,6 +315,11 @@ local plugins = {
 
   {
     "rest-nvim/rest.nvim"
+  },
+
+  {
+    "3rd/image.nvim",
+    opts = {}
   }
 }
 
