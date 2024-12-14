@@ -313,14 +313,15 @@ local plugins = {
 
   'NoahTheDuke/vim-just',
 
-  {
-    "rest-nvim/rest.nvim"
-  },
+  "rest-nvim/rest.nvim",
+
+  "xiyaowong/transparent.nvim",
 
   {
     "3rd/image.nvim",
     opts = {}
   }
+
 }
 
 local opts = {}
