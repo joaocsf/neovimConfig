@@ -58,3 +58,5 @@ vim.g.neovide_no_idle = true
 vim.g.neovide_remember_window_position = true
 vim.g.neovide_remember_window_size = true
 vim.g.mapleader = ' '
+
+vim.cmd("packadd cfilter")
