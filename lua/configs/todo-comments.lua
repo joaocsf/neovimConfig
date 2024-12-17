@@ -11,7 +11,7 @@ if ok then
       HACK = { icon = ' ', color = 'warning' },
       WARN = { icon = ' ', color = 'warning', alt = { 'WARNING', 'Warn', 'Warning', 'XXX' } },
       PERF = { icon = '⚡️', alt = { 'Perf', 'OPTIM', 'Optim', 'PERFORMANCE', 'Performance', 'OPTIMIZE', 'Optimize' } },
-      NOTE = { icon = '󰎚 ', color = 'hint', alt = { 'Note', 'INFO', 'Info' } },
+      NOTE = { icon = '󰎚 ', color = 'hint', alt = { 'Note', 'INFO', 'Info', 'Notice', 'NOTICE' } },
       TEST = { icon = '󰙨 ', color = 'test', alt = { 'Test', 'TESTING', 'Testing', 'PASSED', 'Passed', 'FAILED', 'Failed' } },
     },
     gui_style = {
