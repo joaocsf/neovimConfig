@@ -318,14 +318,6 @@ local plugins = {
   "xiyaowong/transparent.nvim",
 
   {
-    "vhyrro/luarocks.nvim",
-    priority = 1001,
-    opts = {
-      rocks = { "magick" },
-    },
-  },
-
-  {
     "3rd/image.nvim",
     opts = {}
   },
