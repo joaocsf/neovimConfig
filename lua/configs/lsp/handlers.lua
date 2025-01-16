@@ -4,6 +4,11 @@ local map = vim.keymap.set
 
 local ok_telescope, telescope = pcall(require, 'telescope.builtin')
 
+local float_opts = {
+  border = 'rounded',
+  max_width = 90,
+}
+
 function M.setup()
   local signs = {
     { name = 'DiagnosticSignError', text = '' },
@@ -32,12 +37,7 @@ function M.setup()
     },
   }
 
-  local float_opts = {
-    border = 'rounded',
-    max_width = 90,
-  }
 
-  vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, float_opts)
   vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, float_opts)
 end
 
@@ -67,12 +67,12 @@ M.on_attach = function(client, bufnr)
           and lastDiagnosticBuffer == nil) then
         lastDiagnosticBuffer, _ = vim.diagnostic.open_float()
       else
-        vim.lsp.buf.hover()
+        vim.lsp.buf.hover(float_opts)
       end
     end
   end)(), { desc = 'Hover symbol details', buffer = bufnr })
   map('n', 'gH', function()
-    vim.lsp.buf.hover()
+    vim.lsp.buf.hover(float_opts)
   end, { desc = 'Hover symbol details', buffer = bufnr })
   map('n', '<leader>la', function()
     vim.lsp.buf.code_action()
