@@ -215,7 +215,9 @@ map('n', '<leader>lO', function()
   require 'telescope.builtin'.lsp_outgoing_calls()
 end, { desc = 'Outgoing calls' })
 
--- Toggle Term
+-- Aerial
+map('n', '<leader>aa', '<cmd>AerialToggle<cr>', { desc = 'AerialToggle' })
+
 -- Lazygit
 map('n', '<leader>gg', function()
   require 'helpers.term'.lazygit_toggle()

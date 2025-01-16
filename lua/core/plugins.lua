@@ -318,8 +318,25 @@ local plugins = {
   "xiyaowong/transparent.nvim",
 
   {
+    "vhyrro/luarocks.nvim",
+    priority = 1001,
+    opts = {
+      rocks = { "magick" },
+    },
+  },
+
+  {
     "3rd/image.nvim",
     opts = {}
+  },
+
+  {
+    'stevearc/aerial.nvim',
+    opts = {},
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons"
+    },
   }
 
 }
