@@ -5,9 +5,13 @@ if ok then
   local metals_config = metals.bare_config()
 
   metals_config.settings = {
-    showImplicitArguments = true,
-    showImplicitConversionsAndClasses = true,
-    showInferredType = true
+    inlayHints = {
+      hintsInPatternMatch = { enable = true },
+      implicitArguments = { enable = true },
+      implicitConversions = { enable = true },
+      inferredTypes = { enable = true },
+      typeParameters = { enable = true },
+    },
   }
 
   metals_config.capabilities = require 'cmp_nvim_lsp'.default_capabilities()
@@ -31,7 +35,7 @@ if ok then
     -- NOTE: You may or may not want java included here. You will need it if you
     -- want basic Java support but it may also conflict if you are using
     -- something like nvim-jdtls which also works on a java filetype autocmd.
-    pattern = { 'scala', 'sbt' },
+    pattern = { 'scala', 'sbt', 'java' },
     callback = function()
       metals.initialize_or_attach(metals_config)
     end,
