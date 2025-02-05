@@ -96,7 +96,11 @@ M.on_attach = function(client, bufnr)
     vim.lsp.buf.declaration()
   end, { desc = 'Declaration of current symbol', buffer = bufnr })
   map('n', 'gI', function()
-    vim.lsp.buf.implementation()
+    if ok_telescope then
+      telescope.lsp_implementations { show_line = false }
+    else
+      vim.lsp.buf.implementation()
+    end
   end, { desc = 'Implementation of current symbol', buffer = bufnr })
   map('n', 'gd', function()
     if ok_telescope then
