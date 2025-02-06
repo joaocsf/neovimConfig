@@ -17,11 +17,16 @@ local lsp_status = {
     if next(clients) == nil then
       return msg
     end
+    local lsps = {}
     for _, client in ipairs(clients) do
       local filetypes = client.config.filetypes
       if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-        return client.name
+        table.insert(lsps, client.name)
       end
+    end
+    if #lsps ~= 0 then
+      table.sort(lsps)
+      return table.concat(lsps, " ")
     end
     return msg
   end,
