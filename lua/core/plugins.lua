@@ -165,7 +165,10 @@ local plugins = {
 
   'phaazon/hop.nvim',
 
-  'ggandor/lightspeed.nvim',
+  {
+    'folke/flash.nvim',
+    config = conf 'flash'
+  },
 
   {
     'nvim-lualine/lualine.nvim',
