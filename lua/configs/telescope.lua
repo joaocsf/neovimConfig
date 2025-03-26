@@ -1,6 +1,7 @@
 local ok, telescope = pcall(require, 'telescope')
 if ok then
   local actions = require 'telescope.actions'
+  local lga_actions = require("telescope-live-grep-args.actions")
 
   local code_actions_opts = {
     winblend = 15,
@@ -27,6 +28,10 @@ if ok then
       },
     }
   end
+
+  mappings['i']["<C-k>"] = lga_actions.quote_prompt()
+  mappings['i']["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " })
+  mappings['i']["<C-space>"] = lga_actions.to_fuzzy_refine
 
   telescope.setup {
     defaults = {
