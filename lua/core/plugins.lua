@@ -318,7 +318,14 @@ local plugins = {
 
   "rest-nvim/rest.nvim",
 
-  "xiyaowong/transparent.nvim",
+  {
+    "xiyaowong/transparent.nvim",
+    opts = {
+      exclude_groups = {
+        'CursorLine',
+      }
+    }
+  },
 
   {
     "3rd/image.nvim",
