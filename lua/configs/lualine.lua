@@ -8,27 +8,6 @@ local metals_status = {
   color = { fg = 'yellow', gui = 'bold' }
 }
 
-local lsp_status = {
-  cond = function() return next(vim.lsp.get_clients()) ~= nil end,
-  function()
-    local msg = 'No Active Lsp'
-    local bufnr = vim.api.nvim_get_current_buf()
-    local clients = vim.lsp.get_clients({ bufnr = bufnr })
-    if next(clients) == nil then
-      return msg
-    end
-    local lsps = {}
-    for _, client in ipairs(clients) do table.insert(lsps, client.name) end
-    if #lsps ~= 0 then
-      table.sort(lsps)
-      return table.concat(lsps, " ")
-    end
-    return msg
-  end,
-  icon = ' ',
-  color = { gui = 'bold' },
-}
-
 if ok then
   lualine.setup {
     options = {
@@ -73,7 +52,7 @@ if ok then
       lualine_c = { metals_status },
       lualine_x = {},
       lualine_y = {},
-      lualine_z = { lsp_status }
+      lualine_z = { 'lsp_status' }
     },
     inactive_winbar = {
       lualine_a = {},
@@ -81,7 +60,7 @@ if ok then
       lualine_c = { metals_status },
       lualine_x = {},
       lualine_y = {},
-      lualine_z = { lsp_status }
+      lualine_z = { 'lsp_status' }
     },
     extensions = { 'fugitive', 'nvim-tree', 'quickfix', 'nvim-dap-ui' }
   }
