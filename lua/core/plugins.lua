@@ -278,6 +278,11 @@ local plugins = {
 
   'nvim-telescope/telescope-symbols.nvim',
 
+  {
+    "j-hui/fidget.nvim",
+    opts = {},
+  },
+
   -- Language Specific
 
   {
