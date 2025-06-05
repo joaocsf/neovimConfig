@@ -280,7 +280,14 @@ local plugins = {
 
   {
     "j-hui/fidget.nvim",
-    opts = {},
+    opts = {
+      notification = {
+        window = {
+          winblend = 25,
+          border = "solid"
+        },
+      }
+    },
   },
 
   -- Language Specific
