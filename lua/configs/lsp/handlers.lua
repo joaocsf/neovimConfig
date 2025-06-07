@@ -45,9 +45,6 @@ function M.setup()
       prefix = '',
     },
   }
-
-
-  vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, float_opts)
 end
 
 local function lsp_highlight_document(client)
@@ -88,13 +85,13 @@ M.on_attach = function(client, bufnr)
   end, { desc = 'LSP code action', buffer = bufnr })
   map('n', '<leader>lf', custom_format, { desc = 'Format code', buffer = bufnr })
   map('n', '<leader>lh', function()
-    vim.lsp.buf.signature_help()
+    vim.lsp.buf.signature_help(float_opts)
   end, { desc = 'Signature help', buffer = bufnr })
   map('n', '<leader>lH', function()
     vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
   end, { desc = 'Toggle Inlay Hints', buffer = bufnr })
   map('i', '<C-h>', function()
-    vim.lsp.buf.signature_help()
+    vim.lsp.buf.signature_help(float_opts)
   end, { desc = 'Signature help', buffer = bufnr })
   map('n', '<leader>lr', function()
     vim.lsp.buf.rename()

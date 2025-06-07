@@ -7,6 +7,7 @@ if ok then
     min_height = 5,
     max_width = 120,
     max_height = 25,
+    adjust_window = true,
     keymaps = {
       close = 'q',
       next_match = 'n',

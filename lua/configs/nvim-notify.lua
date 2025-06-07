@@ -3,6 +3,7 @@ local ok, notify = pcall(require, 'notify')
 if ok then
   notify.setup {
     background_colour = 'Normal',
+    merge_duplicates = true,
     fps = 30,
     icons = {
       DEBUG = '',

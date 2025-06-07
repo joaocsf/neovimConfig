@@ -47,7 +47,7 @@ if ok_dap and ok_dapui and ok_dapvt then
 
   -- Setup dapui and dap virtual text
   dapui.setup()
-  dapvt.setup()
+  dapvt.setup {}
 
   -- Automatically open dapui
   dap.listeners.after.event_initialized['dapui_config'] = function()

@@ -1,8 +1,7 @@
 local ok_input, Input = pcall(require, 'nui.input')
-local ok_menu, Menu = pcall(require, 'nui.menu')
 local ok_autocmd, autocmd = pcall(require, 'nui.utils.autocmd')
 
-if ok_input and ok_autocmd and ok_menu then
+if ok_input and ok_autocmd then
   local event = autocmd.event
 
   local function override_ui_input()
@@ -11,7 +10,7 @@ if ok_input and ok_autocmd and ok_menu then
     vim.ui.input = function(opts, on_confirm)
       if input_ui then
         -- ensure single ui.input operation
-        vim.api.nvim_err_writeln 'busy: another input is pending!'
+        vim.api.nvim_echo({ { 'busy: another input is pending!', 'ErrorMsg' } }, true, {})
         return
       end
 
@@ -71,88 +70,6 @@ if ok_input and ok_autocmd and ok_menu then
       input_ui:map('n', '<Esc>', function()
         on_done(nil)
       end, { noremap = true, nowait = true })
-    end
-  end
-
-  local function override_ui_select()
-    local select_ui = nil
-
-    vim.ui.select = function(items, opts, on_choice)
-      if select_ui then
-        -- ensure single ui.select operation
-        vim.api.nvim_err_writeln 'busy: another select is pending!'
-        return
-      end
-
-      local function on_done(item, index)
-        if select_ui then
-          -- if it's still mounted, unmount it
-          select_ui:unmount()
-        end
-        -- pass the select value
-        on_choice(item, index)
-        -- indicate the operation is done
-        select_ui = nil
-      end
-
-      local border_top_text = opts.prompt or '[Choose Item]'
-      local kind = opts.kind or 'unknown'
-      local format_item = opts.format_item or tostring
-
-      local relative = 'editor'
-      local position = '50%'
-
-      if kind == 'codeaction' then
-        -- change position for codeaction selection
-        relative = 'cursor'
-        position = {
-          row = 1,
-          col = 0,
-        }
-      end
-
-      local max_width = vim.api.nvim_win_get_width(0)
-
-      local menu_items = {}
-      for index, item_value in ipairs(items) do
-        local item_text = string.sub(format_item(item_value), 0, max_width - 2)
-        local item = {
-          index = index,
-          value = item_value
-        }
-        table.insert(menu_items, Menu.item(item_text, item))
-      end
-
-      select_ui = Menu({
-        relative = relative,
-        position = position,
-        border = {
-          style = 'rounded',
-          highlight = 'Normal',
-          text = {
-            top = border_top_text,
-            top_align = 'left',
-          },
-        },
-        win_options = {
-          winhighlight = 'Normal:Normal',
-        },
-      }, {
-        lines = menu_items,
-        on_close = function()
-          on_done(nil, nil)
-        end,
-        on_submit = function(item)
-          on_done(item.value, item.index)
-        end,
-      })
-
-      select_ui:mount()
-
-      -- cancel operation if cursor leaves select
-      select_ui:on(event.BufLeave, function()
-        on_done(nil, nil)
-      end, { once = true })
     end
   end
 

@@ -1,5 +1,6 @@
 local ok, comment = pcall(require, 'Comment')
 if ok then
+  ---@diagnostic disable-next-line: missing-fields
   comment.setup {
     ---Add a space b/w comment and the line
     ---@type boolean|fun():boolean

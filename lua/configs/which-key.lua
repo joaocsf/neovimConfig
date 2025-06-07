@@ -1,5 +1,6 @@
 local ok, wk = pcall(require, 'which-key')
 if ok then
+  ---@diagnostic disable-next-line: missing-fields
   wk.setup {
     plugins = {
       marks = true,       -- shows a list of your marks on ' and `
