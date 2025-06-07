@@ -36,6 +36,6 @@ if ok then
       opts = tbl_deep_extend('force', opts, overrides)
     end
 
-    lspconfig[server_name].setup(opts)
+    vim.lsp.config(server_name, opts)
   end
 end
