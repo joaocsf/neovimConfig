@@ -290,6 +290,11 @@ local plugins = {
     },
   },
 
+  {
+    'stevearc/conform.nvim',
+    config = conf 'conform'
+  },
+
   -- Language Specific
 
   {

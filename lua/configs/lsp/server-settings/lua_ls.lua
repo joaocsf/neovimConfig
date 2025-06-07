@@ -2,16 +2,22 @@ return {
   settings = {
     Lua = {
       runtime = {
-        version = 'LuaJIT'
+        version = 'LuaJIT',
+        path = {
+          'lua/?.lua',
+          'lua/?/init.lua',
+        },
       },
       diagnostics = {
-        globals = { 'vim' },
+        -- Get the language server to recognize the `vim` global
+        globals = {
+          'vim',
+          'require'
+        },
       },
       workspace = {
-        library = {
-          [vim.fn.expand '$VIMRUNTIME/lua'] = true,
-          [vim.fn.stdpath 'config' .. '/lua'] = true,
-        },
+        -- Make the server aware of Neovim runtime files
+        library = vim.api.nvim_get_runtime_file("", true),
       },
       format = {
         enable = true,

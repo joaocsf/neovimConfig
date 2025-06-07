@@ -3,6 +3,15 @@ local sign_define = vim.fn.sign_define
 local map = vim.keymap.set
 
 local ok_telescope, telescope = pcall(require, 'telescope.builtin')
+local ok_conform, conform = pcall(require, 'conform')
+
+local function custom_format()
+  if ok_conform then
+    conform.format()
+  else
+    vim.lsp.buf.format()
+  end
+end
 
 local float_opts = {
   border = 'rounded',
@@ -77,9 +86,7 @@ M.on_attach = function(client, bufnr)
   map('n', '<leader>la', function()
     vim.lsp.buf.code_action()
   end, { desc = 'LSP code action', buffer = bufnr })
-  map('n', '<leader>lf', function()
-    vim.lsp.buf.format()
-  end, { desc = 'Format code', buffer = bufnr })
+  map('n', '<leader>lf', custom_format, { desc = 'Format code', buffer = bufnr })
   map('n', '<leader>lh', function()
     vim.lsp.buf.signature_help()
   end, { desc = 'Signature help', buffer = bufnr })
@@ -135,18 +142,14 @@ M.on_attach = function(client, bufnr)
   map('n', 'gl', function()
     vim.lsp.codelens.run()
   end, { desc = 'Condelens run', buffer = bufnr })
-  vim.api.nvim_buf_create_user_command(bufnr, 'Format', function()
-    vim.lsp.buf.format()
-  end, { desc = 'Format file with LSP' })
+  vim.api.nvim_buf_create_user_command(bufnr, 'Format', custom_format, { desc = 'Format file with LSP' })
 
   local autocmd = vim.api.nvim_create_autocmd
   local augroup = vim.api.nvim_create_augroup
 
   local group = augroup('Auto Format on Save', { clear = true })
   autocmd('BufWritePre', {
-    callback = function()
-      vim.lsp.buf.format()
-    end,
+    callback = custom_format,
     group = group,
   })
 
