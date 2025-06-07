@@ -32,10 +32,12 @@ if ok then
       opts.capabilities = tbl_deep_extend('force', capabilities, opts.capabilities)
     end
 
+
     if has_overrides then
       opts = tbl_deep_extend('force', opts, overrides)
     end
 
+    vim.lsp.enable(server_name)
     vim.lsp.config(server_name, opts)
   end
 end
