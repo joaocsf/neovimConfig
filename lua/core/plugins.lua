@@ -356,7 +356,9 @@ local plugins = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-tree/nvim-web-devicons"
     },
-  }
+  },
+
+  'pteroctopus/faster.nvim'
 
 }
 
