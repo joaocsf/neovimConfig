@@ -45,7 +45,14 @@ if ok then
     })
   })
 
+  local i = 0
   cmp.setup {
+    enabled = function()
+      local ok_file, file_size_kb = pcall(function()
+        return vim.loop.fs_stat(vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())).size / 1024
+      end)
+      return (not ok_file) or file_size_kb < 512
+    end,
     preselect = cmp.PreselectMode.Item,
     formatting = {
       fields = { 'kind', 'abbr', 'menu' },
