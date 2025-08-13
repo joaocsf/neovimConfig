@@ -13,6 +13,22 @@ local function custom_format()
   end
 end
 
+local function lsp_highlight_document(client)
+  if client.server_capabilities.documentHighlightProvider then
+    vim.api.nvim_create_augroup('lsp_document_highlight', { clear = true })
+    vim.api.nvim_create_autocmd('CursorHold', {
+      group = 'lsp_document_highlight',
+      pattern = '<buffer>',
+      callback = vim.lsp.buf.document_highlight,
+    })
+    vim.api.nvim_create_autocmd('CursorMoved', {
+      group = 'lsp_document_highlight',
+      pattern = '<buffer>',
+      callback = vim.lsp.buf.clear_references,
+    })
+  end
+end
+
 local float_opts = {
   border = 'rounded',
   max_width = 90,
@@ -45,22 +61,6 @@ function M.setup()
       prefix = '',
     },
   }
-end
-
-local function lsp_highlight_document(client)
-  if client.server_capabilities.documentHighlightProvider then
-    vim.api.nvim_create_augroup('lsp_document_highlight', { clear = true })
-    vim.api.nvim_create_autocmd('CursorHold', {
-      group = 'lsp_document_highlight',
-      pattern = '<buffer>',
-      callback = vim.lsp.buf.document_highlight,
-    })
-    vim.api.nvim_create_autocmd('CursorMoved', {
-      group = 'lsp_document_highlight',
-      pattern = '<buffer>',
-      callback = vim.lsp.buf.clear_references,
-    })
-  end
 end
 
 M.on_attach = function(client, bufnr)
@@ -162,29 +162,6 @@ M.on_attach = function(client, bufnr)
       hint_prefix = '• '
     }, bufnr)
   end
-end
-
-local ok_cmp_nvim_lsp, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
-
-if ok_cmp_nvim_lsp then
-  M.capabilities = cmp_nvim_lsp.default_capabilities()
-else
-  M.capabilities = vim.lsp.protocol.make_client_capabilities()
-  M.capabilities.textDocument.completion.completionItem.documentationFormat = { 'markdown', 'plaintext' }
-  M.capabilities.textDocument.completion.completionItem.snippetSupport = true
-  M.capabilities.textDocument.completion.completionItem.preselectSupport = true
-  M.capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
-  M.capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
-  M.capabilities.textDocument.completion.completionItem.deprecatedSupport = true
-  M.capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
-  M.capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
-  M.capabilities.textDocument.completion.completionItem.resolveSupport = {
-    properties = {
-      'documentation',
-      'detail',
-      'additionalTextEdits',
-    },
-  }
 end
 
 return M
