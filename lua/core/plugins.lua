@@ -214,8 +214,6 @@ local plugins = {
 
   'tpope/vim-rhubarb',
 
-  'ray-x/lsp_signature.nvim',
-
   {
     'vimwiki/vimwiki',
     init = conf 'vimwiki'
