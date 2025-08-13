@@ -16,6 +16,7 @@ end
 
 vim.g.mapleader = ' '
 
+map('t', '<esc><esc>', '<c-\\><c-n>')
 -- Trouble
 map('n', '<leader>xx', '<cmd>TroubleToggle<cr>',
   { silent = true, noremap = true, desc = 'Trouble Toggle' }
