@@ -1,0 +1,10 @@
+{
+  "specs2": {
+    "prefix": "specs2 specification",
+    "body": [
+      "class ${TM_FILENAME_BASE} extends Specification {",
+      "}"
+    ],
+    "description": "Random digits"
+  }
+}

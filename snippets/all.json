@@ -1,0 +1,7 @@
+{
+  "random": {
+    "prefix": "random",
+    "body": "${RANDOM}",
+    "description": "Random digits"
+  }
+}
