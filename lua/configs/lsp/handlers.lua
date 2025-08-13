@@ -1,5 +1,4 @@
 local M = {}
-local sign_define = vim.fn.sign_define
 local map = vim.keymap.set
 
 local ok_telescope, telescope = pcall(require, 'telescope.builtin')
@@ -35,20 +34,28 @@ local float_opts = {
 }
 
 function M.setup()
-  local signs = {
-    { name = 'DiagnosticSignError', text = '' },
-    { name = 'DiagnosticSignWarn', text = '' },
-    { name = 'DiagnosticSignHint', text = '󰌵' },
-    { name = 'DiagnosticSignInfo', text = '' },
-  }
-
-  for _, sign in ipairs(signs) do
-    sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = '' })
-  end
-
   vim.diagnostic.config {
+    signs = {
+      text = {
+        [vim.diagnostic.severity.ERROR] = " ",
+        [vim.diagnostic.severity.WARN] = " ",
+        [vim.diagnostic.severity.INFO] = "󰋼 ",
+        [vim.diagnostic.severity.HINT] = "󰌵 ",
+      },
+      texthl = {
+        [vim.diagnostic.severity.ERROR] = "Error",
+        [vim.diagnostic.severity.WARN] = "Error",
+        [vim.diagnostic.severity.HINT] = "Hint",
+        [vim.diagnostic.severity.INFO] = "Info",
+      },
+      numhl = {
+        [vim.diagnostic.severity.ERROR] = "",
+        [vim.diagnostic.severity.WARN] = "",
+        [vim.diagnostic.severity.HINT] = "",
+        [vim.diagnostic.severity.INFO] = "",
+      },
+    },
     virtual_text = true,
-    signs = { active = signs },
     update_in_insert = true,
     underline = true,
     severity_sort = true,
