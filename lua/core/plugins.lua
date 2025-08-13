@@ -115,17 +115,10 @@ local plugins = {
   },
 
   {
-    'hrsh7th/nvim-cmp',
-    dependencies = {
-      'L3MON4D3/LuaSnip',
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-path',
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-cmdline',
-      'hrsh7th/cmp-nvim-lsp-signature-help',
-      'saadparwaiz1/cmp_luasnip',
-    },
-    config = conf 'nvim-cmp',
+    'saghen/blink.cmp',
+    dependencies = { 'rafamadriz/friendly-snippets' },
+    version = '1.*',
+    config = conf 'blink-cmp'
   },
 
   {
@@ -162,9 +155,6 @@ local plugins = {
     'norcalli/nvim-colorizer.lua',
     config = conf 'nvim-colorizer'
   },
-
-  'phaazon/hop.nvim',
-
   {
     'folke/flash.nvim',
     config = conf 'flash'
@@ -300,8 +290,7 @@ local plugins = {
   {
     'scalameta/nvim-metals',
     dependencies = {
-      'nvim-lua/plenary.nvim',
-      'hrsh7th/nvim-cmp',
+      'nvim-lua/plenary.nvim'
     },
     config = conf 'nvim-metals',
   },
@@ -359,7 +348,6 @@ local plugins = {
   },
 
   'pteroctopus/faster.nvim'
-
 }
 
 local opts = {}

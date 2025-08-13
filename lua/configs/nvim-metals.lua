@@ -14,7 +14,6 @@ if ok then
     },
   }
 
-  metals_config.capabilities = require 'cmp_nvim_lsp'.default_capabilities()
   metals_config.init_options.statusBarProvider = 'on'
 
   metals_config.on_attach = function(client, bufnr)
