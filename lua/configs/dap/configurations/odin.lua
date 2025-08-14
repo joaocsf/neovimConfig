@@ -1,11 +1,11 @@
+local telescope = require('helpers.telescope')
+
 return {
   {
     name = 'Launch file',
-    type = 'cppdbg',
+    type = 'codelldb',
     request = 'launch',
-    program = function()
-      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-    end,
+    program = telescope.filepicker,
     cwd = '${workspaceFolder}',
     stopAtEntry = true,
   },
