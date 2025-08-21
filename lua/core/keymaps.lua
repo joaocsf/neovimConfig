@@ -16,6 +16,9 @@ end
 
 vim.g.mapleader = ' '
 
+-- Select last pasted text
+map('n', 'gV', '`[v`]$')
+
 -- Trouble
 map('n', '<leader>xx', '<cmd>TroubleToggle<cr>',
   { silent = true, noremap = true, desc = 'Trouble Toggle' }
