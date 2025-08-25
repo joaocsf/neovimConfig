@@ -11,7 +11,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 local servers = require 'mason-lspconfig'.get_installed_servers()
-local additional_servers = { 'ocamllsp', 'ols' }
+local additional_servers = { 'ocamllsp', 'ols_fixed' }
 local all_servers = vim.list_extend(servers, additional_servers)
 
 for _, server_name in ipairs(all_servers) do
