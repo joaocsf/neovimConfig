@@ -92,6 +92,8 @@ local plugins = {
   },
   {
     'nvim-treesitter/nvim-treesitter',
+    lazy = false,
+    branch = 'main',
     build = ':TSUpdate',
     config = conf 'tree-sitter',
   },
@@ -128,8 +130,6 @@ local plugins = {
 
   'windwp/nvim-ts-autotag',
 
-  'p00f/nvim-ts-rainbow',
-
   'wellle/targets.vim',
 
   {
@@ -140,20 +140,12 @@ local plugins = {
       'echasnovski/mini.icons',
       'nvim-tree/nvim-web-devicons',
     },
-    -- keys = {
-    --   {
-    --     "<leader>?",
-    --     function()
-    --       require("which-key").show({ global = false })
-    --     end,
-    --     desc = "Buffer Local Keymaps (which-key)",
-    --   },
-    -- },
   },
 
   {
-    'norcalli/nvim-colorizer.lua',
-    config = conf 'nvim-colorizer'
+    'catgoose/nvim-colorizer.lua',
+    event = "BufReadPre",
+    opts = {},
   },
   {
     'folke/flash.nvim',
@@ -241,8 +233,6 @@ local plugins = {
     'onsails/lspkind.nvim',
     config = conf 'lspkind'
   },
-
-  'nvim-treesitter/playground',
 
   'kyoh86/vim-jsonl',
 
