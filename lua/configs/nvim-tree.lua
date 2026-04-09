@@ -98,10 +98,6 @@ if ok then
       update_cwd = false,
       ignore_list = {},
     },
-    system_open = {
-      cmd = '',
-      args = {},
-    },
     diagnostics = {
       enable = true,
       show_on_dirs = true,
