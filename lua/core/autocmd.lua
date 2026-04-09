@@ -2,6 +2,8 @@ local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 
 local group = augroup('Highlight Yank', { clear = true })
+
+---@diagnostic disable-next-line: param-type-mismatch
 autocmd('TextYankPost', {
   callback = function()
     vim.hl.on_yank { higroup = 'IncSearch', timeout = 200 }
