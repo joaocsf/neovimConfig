@@ -48,7 +48,7 @@ if ok then
     tabline = {},
     winbar = {
       lualine_a = {},
-      lualine_b = {},
+      lualine_b = { 'filename' },
       lualine_c = { metals_status },
       lualine_x = {},
       lualine_y = {},
@@ -56,7 +56,7 @@ if ok then
     },
     inactive_winbar = {
       lualine_a = {},
-      lualine_b = {},
+      lualine_b = { 'filename' },
       lualine_c = { metals_status },
       lualine_x = {},
       lualine_y = {},
