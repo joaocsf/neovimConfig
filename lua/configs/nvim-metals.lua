@@ -16,6 +16,9 @@ if ok then
 
   metals_config.init_options.statusBarProvider = 'on'
 
+  -- https://github.com/scalameta/nvim-metals/issues/762
+  metals_config.init_options.globSyntax = "vscode"
+
   metals_config.on_attach = function(client, bufnr)
     metals.setup_dap()
     require 'configs.lsp.handlers'.on_attach(client, bufnr)
