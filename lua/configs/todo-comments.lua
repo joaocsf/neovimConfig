@@ -13,6 +13,7 @@ if ok then
       PERF = { icon = '⚡️', alt = { 'Perf', 'OPTIM', 'Optim', 'PERFORMANCE', 'Performance', 'OPTIMIZE', 'Optimize' } },
       NOTE = { icon = '󰎚 ', color = 'hint', alt = { 'Note', 'INFO', 'Info', 'Notice', 'NOTICE' } },
       TEST = { icon = '󰙨 ', color = 'test', alt = { 'Test', 'TESTING', 'Testing', 'PASSED', 'Passed', 'FAILED', 'Failed' } },
+      WIP = { icon = '🚧', color = 'error', alt = { 'wip', 'WIP', 'Wip' } },
     },
     gui_style = {
       fg = 'NONE',         -- The gui style to use for the fg highlight group.
