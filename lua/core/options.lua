@@ -1,48 +1,42 @@
-local opt = vim.opt
-local o = vim.o
-local wo = vim.wo
+vim.o.mouse = 'a'
+vim.o.guifont = 'Iosevka:h12'
+vim.o.swapfile = true
+vim.o.dir = '/tmp'
+vim.o.smartcase = true
+vim.o.laststatus = 2
+vim.o.hlsearch = true
+vim.o.incsearch = true
+vim.o.ignorecase = true
+vim.o.scrolloff = 8
+vim.o.wildmenu = true
+vim.o.splitbelow = true
+vim.o.splitright = true
+vim.o.signcolumn = 'yes'
 
-opt.showmode = false
-
-o.mouse = 'a'
-o.guifont = 'Iosevka:h12'
-o.swapfile = true
-o.dir = '/tmp'
-o.smartcase = true
-o.laststatus = 2
-o.hlsearch = true
-o.incsearch = true
-o.ignorecase = true
-o.scrolloff = 8
-o.wildmenu = true
-o.splitbelow = true
-o.splitright = true
-o.signcolumn = 'yes'
-
-wo.number = false
-wo.wrap = false
-wo.nu = true
-wo.rnu = true
-wo.cursorline = true
-wo.colorcolumn = '80,120'
+vim.wo.number = false
+vim.wo.wrap = false
+vim.wo.nu = true
+vim.wo.rnu = true
+vim.wo.cursorline = true
+vim.wo.colorcolumn = '80,120'
 
 vim.opt.fillchars = {
   eob = ' '
 }
 
+vim.opt.showmode = false
 vim.opt.expandtab = true
 vim.opt.softtabstop = 0
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.updatetime = 750
 vim.opt.timeoutlen = 500
-vim.opt_global.shortmess:remove 'F'
 vim.opt.list = true
 vim.opt.listchars:append 'leadmultispace:⋅│'
 vim.opt.listchars:append 'tab:» '
 vim.opt.listchars:append 'space:⋅'
 vim.opt.listchars:append 'eol:▾'
-
+vim.opt.modeline = false
 vim.opt.termguicolors = true
 
 vim.cmd 'set ls=3'
