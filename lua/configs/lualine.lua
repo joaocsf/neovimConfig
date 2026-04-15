@@ -1,11 +1,15 @@
 local ok, lualine = pcall(require, 'lualine')
 
-
 local metals_status = {
   'g:metals_status',
   draw_empty = false,
   cond = function() return vim.g['metals_status'] ~= nil end,
   color = { fg = 'yellow', gui = 'bold' }
+}
+
+local lualine_file = {
+  'filename',
+  path = 1,
 }
 
 if ok then
@@ -32,7 +36,7 @@ if ok then
     sections = {
       lualine_a = { 'mode' },
       lualine_b = { 'branch', 'diff', 'diagnostics' },
-      lualine_c = { 'filename' },
+      lualine_c = { lualine_file },
       lualine_x = { 'encoding', 'fileformat', 'filetype' },
       lualine_y = { 'progress' },
       lualine_z = { 'location' }
@@ -40,7 +44,7 @@ if ok then
     inactive_sections = {
       lualine_a = {},
       lualine_b = {},
-      lualine_c = { 'filename' },
+      lualine_c = { lualine_file },
       lualine_x = { 'location' },
       lualine_y = {},
       lualine_z = {}
@@ -48,7 +52,7 @@ if ok then
     tabline = {},
     winbar = {
       lualine_a = {},
-      lualine_b = { 'filename' },
+      lualine_b = { lualine_file },
       lualine_c = { metals_status },
       lualine_x = {},
       lualine_y = {},
@@ -56,7 +60,7 @@ if ok then
     },
     inactive_winbar = {
       lualine_a = {},
-      lualine_b = { 'filename' },
+      lualine_b = { lualine_file },
       lualine_c = { metals_status },
       lualine_x = {},
       lualine_y = {},
