@@ -10,11 +10,11 @@ end
 
 local plugins = {
   -- Themes
-  { 'morhetz/gruvbox',                  lazy = false,   priority = 1000 },
+  { 'morhetz/gruvbox',                  priority = 1000 },
   { 'nyoom-engineering/oxocarbon.nvim', priority = 1000 },
   { 'Yazeed1s/oh-lucy.nvim',            priority = 1000 },
   { 'marko-cerovac/material.nvim',      priority = 1000 },
-  { 'sainnhe/gruvbox-material',         lazy = false,   priority = 1000 },
+  { 'sainnhe/gruvbox-material',         priority = 1000 },
   { 'EdenEast/nightfox.nvim',           priority = 1000 },
   { 'sainnhe/edge',                     priority = 1000 },
   { 'savq/melange',                     priority = 1000 },
@@ -23,6 +23,7 @@ local plugins = {
   { 'rebelot/kanagawa.nvim',            priority = 1000 },
   { 'folke/tokyonight.nvim',            priority = 1000 },
   { 'lvim-tech/lvim-colorscheme',       priority = 1000 },
+  { 'everviolet/nvim',                  name = 'evergarden', priority = 1000 },
   {
     'catppuccin/nvim',
     name = 'catppuccin',
