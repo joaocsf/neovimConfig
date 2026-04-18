@@ -250,11 +250,6 @@ local plugins = {
 
   'rhysd/vim-grammarous',
 
-  {
-    'nvimdev/dashboard-nvim',
-    config = conf 'dashboard-nvim'
-  },
-
   'nvim-telescope/telescope-symbols.nvim',
 
   {
@@ -336,7 +331,12 @@ local plugins = {
     },
   },
 
-  'pteroctopus/faster.nvim'
+  'pteroctopus/faster.nvim',
+
+  {
+    'folke/snacks.nvim',
+    config = conf 'snacks'
+  }
 }
 
 local opts = {}
