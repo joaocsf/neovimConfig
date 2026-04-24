@@ -158,6 +158,10 @@ M.on_attach = function(client, bufnr)
   })
 
   lsp_highlight_document(client)
+
+  if client:supports_method('textDocument/documentColor') then
+    vim.lsp.document_color.enable(true, { client_id = client }, { style = 'virtual' })
+  end
 end
 
 return M
