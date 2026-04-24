@@ -12,6 +12,11 @@ if ok then
       inferredTypes = { enable = true },
       typeParameters = { enable = true },
     },
+    excludedPackages = {
+      "akka.actor.typed.javadsl",
+      "org.apache.pekko.actor.typed.javadsl",
+      "com.github.swagger.akka.javadsl",
+    },
   }
 
   metals_config.init_options.statusBarProvider = 'on'
