@@ -1,7 +1,7 @@
 local ok, oil = pcall(require, 'oil')
 
 if ok then
-  vim.keymap.set('n', '<C-\\>', require 'oil'.open, { desc = 'Open parent directory' })
+  -- vim.keymap.set('n', '<C-\\>', require 'oil'.open, { desc = 'Open parent directory' })
 
   oil.setup {
     -- Id is automatically added at the beginning, and name at the end

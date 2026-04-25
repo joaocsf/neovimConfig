@@ -336,7 +336,13 @@ local plugins = {
   {
     'folke/snacks.nvim',
     config = conf 'snacks'
-  }
+  },
+
+  {
+    'nvim-mini/mini.nvim',
+    version = '*',
+    config = conf 'mini'
+  },
 }
 
 local opts = {}
