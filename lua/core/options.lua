@@ -38,6 +38,10 @@ vim.opt.listchars:append 'space:⋅'
 vim.opt.listchars:append 'eol:▾'
 vim.opt.modeline = false
 vim.opt.termguicolors = true
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldtext = ""
+vim.opt.foldlevelstart = 99
 
 vim.cmd 'set ls=3'
 vim.cmd 'set path+=**'
