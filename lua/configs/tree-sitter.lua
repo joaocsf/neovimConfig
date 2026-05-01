@@ -1,6 +1,7 @@
 local ok, ts = pcall(require, 'nvim-treesitter')
 if ok then
   ts.setup()
+  vim.treesitter.language.register('json', { 'json', 'jsonl' })
   vim.api.nvim_create_autocmd('FileType', {
     callback = function()
       -- syntax highlighting, provided by Neovim

@@ -83,14 +83,8 @@ local plugins = {
     'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
   },
 
-  'famiu/bufdelete.nvim',
-
   'nvim-tree/nvim-web-devicons',
-  {
-    'akinsho/bufferline.nvim',
-    dependencies = 'nvim-tree/nvim-web-devicons',
-    config = conf 'bufferline',
-  },
+
   {
     'nvim-treesitter/nvim-treesitter',
     lazy = false,
@@ -148,6 +142,7 @@ local plugins = {
     event = "BufReadPre",
     opts = {},
   },
+
   {
     'folke/flash.nvim',
     config = conf 'flash'
@@ -235,10 +230,6 @@ local plugins = {
     config = conf 'lspkind'
   },
 
-  'kyoh86/vim-jsonl',
-
-  'alunny/pegjs-vim',
-
   {
     'iamcco/markdown-preview.nvim',
     build = 'cd app && npm install',
@@ -270,6 +261,8 @@ local plugins = {
   },
 
   -- Language Specific
+
+  'alunny/pegjs-vim',
 
   {
     'scalameta/nvim-metals',

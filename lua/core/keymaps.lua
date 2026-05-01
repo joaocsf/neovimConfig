@@ -43,18 +43,15 @@ map('n', 'gR', '<cmd>Trouble lsp_references toggle<cr>',
 map('n', '<leader>e', '<cmd>NvimTreeToggle<cr>', { desc = 'NvimTree Toggle' })
 map('n', '<leader>o', '<cmd>NvimTreeFocus<cr>',  { desc = 'NvimTree Focus' })
 
--- Buffers
--- bufferdelete
-map('n', '<leader>q',  '<cmd>Bdelete<cr>',                             { desc = 'Close buffer' })
-map('n', '<leader>ca', '<cmd>w <bar> %bd <bar> e# <bar> bd# <cr><cr>', { desc = 'Close all buffers' })
 
--- bufferline
-map('n', '<S-k>', '<cmd>BufferLineCycleNext<cr>', { desc = 'Next buffer tab' })
-map('n', '<S-j>', '<cmd>BufferLineCyclePrev<cr>', { desc = 'Previous buffer tab' })
-map('n', '>b',    '<cmd>BufferLineMoveNext<cr>',  { desc = 'Move buffer tab right' })
-map('n', '<b',    '<cmd>BufferLineMovePrev<cr>',  { desc = 'Move buffer tab left' })
-map('n', '<S-l>', '<cmd>BufferLineMoveNext<cr>',  { desc = 'Move buffer tab right' })
-map('n', '<S-h>', '<cmd>BufferLineMovePrev<cr>',  { desc = 'Move buffer tab left' })
+local ok_snacks, snacks = pcall(require, 'snacks')
+
+-- Buffers
+if ok_snacks then
+  map('n', '<leader>qq', function() snacks.bufdelete() end, { desc = 'Close buffer' })
+  map('n', '<leader>qo', snacks.bufdelete.other,            { desc = 'Close other buffers' })
+  map('n', '<leader>qa', snacks.bufdelete.all,              { desc = 'Close all buffers' })
+end
 
 -- Smart Splits
 -- Better window navigation
@@ -222,7 +219,10 @@ map('n', '<leader>lO', function()
 end, { desc = 'Outgoing calls' })
 
 -- Aerial
-map('n', '<leader>aa', '<cmd>AerialToggle<cr>', { desc = 'AerialToggle' })
+local aerial_avail, _ = pcall(require, 'aerial')
+if aerial_avail then
+  map('n', '<leader>aa', '<cmd>AerialToggle<cr>', { desc = 'AerialToggle' })
+end
 
 -- Lazygit
 map('n', '<leader>gg', function()
