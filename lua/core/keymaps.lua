@@ -118,7 +118,7 @@ map('n', '<M-g>', function()
 end, { desc = 'Harpoon Navigate 5' })
 
 -- Diffview
-map('n', '<leader>ga',
+map('n', '<leader>gdd',
   '<cmd>DiffviewOpen<cr>',
   { desc = 'Git Diff View' })
 map('n', '<leader>gq',
@@ -127,6 +127,23 @@ map('n', '<leader>gq',
 map('n', '<leader>gf',
   '<cmd>DiffviewFileHistory<cr>',
   { desc = 'Git Diff History' })
+map('n', '<leader>gdm', function()
+    local ok, diffview = pcall(require, 'diffview')
+    local defaultBranch = vim.trim(vim.fn.system("git symbolic-ref refs/remotes/origin/HEAD --short"))
+    if ok then
+      diffview.open { defaultBranch .. '...' }
+    end
+  end,
+  { desc = 'Git Diff Default Branch' })
+map('n', '<leader>gw', function()
+    local diffopt = vim.opt.diffopt
+    if vim.tbl_contains(diffopt:get(), "iwhiteall") then
+      diffopt:remove("iwhiteall")
+    else
+      diffopt:append("iwhiteall")
+    end
+  end,
+  { desc = 'Git Diff toggle whitespace' })
 
 -- Telescope
 map('v', '<leader>f', function()
@@ -256,9 +273,6 @@ end, { desc = 'Reset git buffer' })
 map('n', '<leader>gs', function()
   require 'gitsigns'.stage_hunk()
 end, { desc = 'Stage/Unstage git hunk' })
-map('n', '<leader>gd', function()
-  require 'gitsigns'.diffthis()
-end, { desc = 'View git diff' })
 
 -- Go to link/file
 map('n', 'gx', function()
