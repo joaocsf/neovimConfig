@@ -136,7 +136,7 @@ if ok then
         quit_on_open = false,
         resize_window = true,
         window_picker = {
-          enable = true,
+          enable = false,
           chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890',
           exclude = {
             filetype = { 'notify', 'qf', 'diff', 'fugitive', 'fugitiveblame' },
