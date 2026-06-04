@@ -53,6 +53,8 @@ if ok_snacks then
   map('n', '<leader>qa', snacks.bufdelete.all,              { desc = 'Close all buffers' })
 end
 
+map('n', '<leader>bc', '<cmd> let @+ = expand(\'%\')<cr>', { desc = 'Copy buffer file path' })
+
 -- Smart Splits
 -- Better window navigation
 map('n', '<C-h>', function()
