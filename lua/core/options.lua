@@ -47,7 +47,7 @@ vim.cmd 'set ls=3'
 vim.cmd 'set path+=**'
 vim.cmd 'syntax on'
 
-vim.opt_global.shortmess:remove 'F'
+vim.opt_global.shortmess:append 'F'
 
 vim.g.neovide_cursor_vfx_mode = 'pixiedust'
 vim.g.neovide_cursor_vfx_particle_density = 50.0
