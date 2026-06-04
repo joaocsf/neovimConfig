@@ -311,11 +311,6 @@ local plugins = {
   },
 
   {
-    "3rd/image.nvim",
-    opts = {}
-  },
-
-  {
     'stevearc/aerial.nvim',
     opts = {},
     dependencies = {
