@@ -149,7 +149,7 @@ map('n', '<leader>gw', function()
 
 -- Telescope
 map('v', '<leader>f', function()
-  local charactersToEscape = '([%[%]%{%}%(%)\\|])'
+  local charactersToEscape = '([%[%]%{%}%(%)\\|\\-])'
   local text = get_visual_selection():gsub(charactersToEscape, '\\%1')
   require 'telescope'.extensions.live_grep_args.live_grep_args { default_text = text }
 end, { desc = 'Search Selection' })
